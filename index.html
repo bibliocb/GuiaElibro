@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía eLibro | Unifranz</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <!-- Google Fonts & Custom CSS -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap');
-        
-        body { 
-            font-family: 'Outfit', sans-serif; 
+
+        body {
+            font-family: 'Outfit', sans-serif;
             background-color: #f0f4f8;
         }
-        
+
         /* Animaciones */
-        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
         }
-        
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Utilidades de Display */
-        .hidden-section { display: none !important; }
-        .flex-section { display: flex !important; }
-        .block-section { display: block !important; }
-        
+        .hidden-section {
+            display: none !important;
+        }
+
+        .flex-section {
+            display: flex !important;
+        }
+
+        .block-section {
+            display: block !important;
+        }
+
         /* Navegación Desktop */
         .nav-btn-desktop {
             position: relative;
             overflow: hidden;
         }
+
         .nav-btn-desktop::after {
             content: '';
             position: absolute;
@@ -47,20 +68,34 @@
             background-color: #ea580c;
             transition: width 0.3s ease;
         }
-        .nav-active-desktop { color: #ea580c; font-weight: 700; background-color: #fff7ed; }
-        .nav-active-desktop::after { width: 100%; }
-        
+
+        .nav-active-desktop {
+            color: #ea580c;
+            font-weight: 700;
+            background-color: #fff7ed;
+        }
+
+        .nav-active-desktop::after {
+            width: 100%;
+        }
+
         /* Navegación Mobile */
-        .nav-active-mobile { 
-            color: #ffffff; 
-            background-color: rgba(255,255,255,0.15); 
+        .nav-active-mobile {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.15);
             border-bottom: 3px solid #fff;
         }
-        
+
         /* Tarjetas Interactivas */
-        .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2); }
-        
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+
         /* Gradientes de Texto */
         .text-gradient {
             background-clip: text;
@@ -73,6 +108,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: bottom right;
         }
+
         .chat-message {
             max-width: 80%;
             margin-bottom: 10px;
@@ -83,6 +119,7 @@
             position: relative;
             word-wrap: break-word;
         }
+
         .chat-user {
             background-color: #ea580c;
             color: white;
@@ -90,6 +127,7 @@
             border-bottom-right-radius: 2px;
             margin-left: auto;
         }
+
         .chat-bot {
             background-color: #f1f5f9;
             color: #334155;
@@ -97,6 +135,7 @@
             border-bottom-left-radius: 2px;
             border: 1px solid #e2e8f0;
         }
+
         .typing-indicator span {
             display: inline-block;
             width: 6px;
@@ -106,14 +145,71 @@
             animation: typing 1.4s infinite ease-in-out both;
             margin: 0 2px;
         }
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
         @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Efectos de Brillo e Innovación */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+        }
+
+        .glow-point {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ea580c;
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(234, 88, 12, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
         }
     </style>
 </head>
+
 <body class="min-h-screen text-slate-800 flex flex-col">
 
     <!-- Navbar -->
@@ -122,7 +218,8 @@
             <div class="flex justify-between h-16">
                 <!-- Logo Area -->
                 <div class="flex items-center flex-shrink-0">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/UNI_FRANZ.png" alt="Unifranz" class="h-10 w-auto mr-3 filter drop-shadow-sm">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/UNI_FRANZ.png" alt="Unifranz"
+                        class="h-10 w-auto mr-3 filter drop-shadow-sm">
                     <div class="hidden sm:flex flex-col leading-tight">
                         <span class="text-lg font-black text-slate-800 tracking-tight">GUIA DIDACTICA</span>
                         <span class="text-xs text-orange-600 font-bold tracking-widest">ELIBRO - RESEARCH4LIFE</span>
@@ -131,16 +228,20 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-1 items-center">
-                    <button onclick="switchTab('inicio')" id="btn-desktop-inicio" class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 nav-active-desktop font-bold">
+                    <button onclick="switchTab('inicio')" id="btn-desktop-inicio"
+                        class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 nav-active-desktop font-bold">
                         <i data-lucide="home" class="w-5 h-5"></i> Inicio
                     </button>
-                    <button onclick="switchTab('colecciones')" id="btn-desktop-colecciones" class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 font-bold">
-                        <i data-lucide="library" class="w-5 h-5"></i> Colecciones
+                    <button onclick="switchTab('investigacion')" id="btn-desktop-investigacion"
+                        class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 font-bold">
+                        <i data-lucide="microscope" class="w-5 h-5"></i> Investigación
                     </button>
-                    <button onclick="switchTab('tutoriales')" id="btn-desktop-tutoriales" class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 font-bold">
+                    <button onclick="switchTab('tutoriales')" id="btn-desktop-tutoriales"
+                        class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 font-bold">
                         <i data-lucide="youtube" class="w-5 h-5"></i> Tutoriales
                     </button>
-                    <button onclick="switchTab('guia')" id="btn-desktop-guia" class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 font-bold">
+                    <button onclick="switchTab('guia')" id="btn-desktop-guia"
+                        class="nav-btn-desktop px-5 py-2 rounded-t-lg text-slate-600 hover:bg-slate-50 hover:text-orange-600 transition-colors flex items-center gap-2 font-bold">
                         <i data-lucide="zap" class="w-5 h-5"></i> Guía Rápida
                     </button>
                 </div>
@@ -149,16 +250,20 @@
 
         <!-- Mobile Menu Strip -->
         <div class="md:hidden flex bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-inner">
-            <button onclick="switchTab('inicio')" id="btn-mobile-inicio" class="flex-1 py-3 flex flex-col items-center justify-center text-xs nav-active-mobile transition-all font-bold">
+            <button onclick="switchTab('inicio')" id="btn-mobile-inicio"
+                class="flex-1 py-3 flex flex-col items-center justify-center text-xs nav-active-mobile transition-all font-bold">
                 <i data-lucide="home" class="w-6 h-6 mb-1"></i> Inicio
             </button>
-            <button onclick="switchTab('colecciones')" id="btn-mobile-colecciones" class="flex-1 py-3 flex flex-col items-center justify-center text-xs text-orange-100 hover:bg-white/10 transition-all font-bold">
-                <i data-lucide="library" class="w-6 h-6 mb-1"></i> Colecciones
+            <button onclick="switchTab('investigacion')" id="btn-mobile-investigacion"
+                class="flex-1 py-3 flex flex-col items-center justify-center text-xs text-orange-100 hover:bg-white/10 transition-all font-bold">
+                <i data-lucide="microscope" class="w-6 h-6 mb-1"></i> Investigación
             </button>
-            <button onclick="switchTab('tutoriales')" id="btn-mobile-tutoriales" class="flex-1 py-3 flex flex-col items-center justify-center text-xs text-orange-100 hover:bg-white/10 transition-all font-bold">
+            <button onclick="switchTab('tutoriales')" id="btn-mobile-tutoriales"
+                class="flex-1 py-3 flex flex-col items-center justify-center text-xs text-orange-100 hover:bg-white/10 transition-all font-bold">
                 <i data-lucide="youtube" class="w-6 h-6 mb-1"></i> Videos
             </button>
-            <button onclick="switchTab('guia')" id="btn-mobile-guia" class="flex-1 py-3 flex flex-col items-center justify-center text-xs text-orange-100 hover:bg-white/10 transition-all font-bold">
+            <button onclick="switchTab('guia')" id="btn-mobile-guia"
+                class="flex-1 py-3 flex flex-col items-center justify-center text-xs text-orange-100 hover:bg-white/10 transition-all font-bold">
                 <i data-lucide="zap" class="w-6 h-6 mb-1"></i> Guía
             </button>
         </div>
@@ -171,116 +276,231 @@
         <!-- PESTAÑA 1: INICIO (Landing Page Style)       -->
         <!-- ============================================ -->
         <section id="section-inicio" class="fade-in-up w-full" style="animation-delay: 0.1s;">
-            
+
             <!-- Hero Banner: Full Width -->
             <div class="relative bg-slate-900 shadow-2xl w-full">
                 <!-- Background Image Overlay -->
-                <div class="absolute inset-0 opacity-40">
-                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" class="w-full h-full object-cover" alt="Library Background">
+                <div class="absolute inset-0 opacity-60">
+                    <img src="bg-ia.png"
+                        class="w-full h-full object-cover" alt="Library Background">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
                 </div>
                 <!-- Contenedor interno -->
-                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex flex-col md:flex-row items-center gap-10">
-                    <div class="md:w-1/2 text-white">
-                        <div class="inline-block bg-orange-500 text-xs font-black px-4 py-1 rounded-full mb-4 tracking-wide shadow-lg border border-orange-400">BIBLIOTECA DIGITAL</div>
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight drop-shadow-lg">
-                            Tu puerta al conocimiento <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">eLibro</span>
+                <div
+                    class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-[50%] text-white glass-card-dark p-6 md:p-8 shadow-2xl">
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-orange-500 text-[10px] font-black px-3 py-1 rounded-full tracking-wider shadow-lg border border-orange-400 uppercase">
+                                Biblioteca Digital
+                            </span>
+                            <span class="bg-blue-600/30 backdrop-blur-md text-[10px] font-black px-3 py-1 rounded-full tracking-wider shadow-lg border border-blue-400/30 uppercase flex items-center gap-1">
+                                <i data-lucide="cpu" class="w-3 h-3"></i> IA & Innovación
+                            </span>
+                        </div>
+                        <h1 class="text-2xl md:text-4xl font-black mb-4 leading-tight text-glow">
+                            Tu puerta al conocimiento <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500">eLibro</span>
                         </h1>
-                        <p class="text-slate-200 text-lg mb-8 leading-relaxed font-medium">
-                            Descubre la plataforma líder en bibliografía académica en español, confiada por más de 3,500 instituciones. Sumérgete en un universo de conocimiento con <strong class="text-white">167,523 títulos disponibles</strong>, respaldados por <strong class="text-white">603 editoriales</strong> de prestigio y la sabiduría de <strong class="text-white">147,827 autores</strong>. ¿Estás listo para explorar el recurso que transformará tu aprendizaje?
+                        <p class="text-slate-300 text-lg mb-8 leading-relaxed font-medium max-w-xl">
+                            Explora la vanguardia del aprendizaje digital con nuestra plataforma potenciada por tecnología de última generación. Accede a <strong class="text-white">167,523 títulos</strong> respaldados por la excelencia académica global.
                         </p>
-                        <div class="flex gap-3 text-sm font-bold">
-                            <div class="flex items-center bg-black/30 px-4 py-2 rounded-xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors cursor-default">
-                                <i data-lucide="check-circle" class="w-5 h-5 text-green-400 mr-2"></i> Inclusión
+                        <div class="flex flex-wrap gap-4 text-sm font-bold">
+                            <div class="flex items-center bg-white/5 px-5 py-3 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all cursor-default group">
+                                <i data-lucide="brain-circuit" class="w-5 h-5 text-orange-400 mr-3 group-hover:scale-110 transition-transform"></i> 
+                                Aprendizaje Inteligente
                             </div>
-                            <div class="flex items-center bg-black/30 px-4 py-2 rounded-xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors cursor-default">
-                                <i data-lucide="shield-check" class="w-5 h-5 text-blue-400 mr-2"></i> Copyright
+                            <div class="flex items-center bg-white/5 px-5 py-3 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all cursor-default group">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-blue-400 mr-3 group-hover:scale-110 transition-transform"></i> 
+                                Innovación Continua
                             </div>
                         </div>
                     </div>
-                    <div class="md:w-1/2 flex justify-center">
-                        <img src="https://scontent.flpb3-2.fna.fbcdn.net/v/t39.30808-6/278794067_3065131150403380_5166123758741889535_n.png?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=VVvCApJswU4Q7kNvwGaidJh&_nc_oc=AdkhNSbWOa6g83ZrUsg6lByYurUrW_GAydjOMSz56HOxy4DDqqAkBldZq7-r4R3BRKE&_nc_zt=23&_nc_ht=scontent.flpb3-2.fna&_nc_gid=QU61CoQns4-HE_Lwou1xCw&oh=00_AfnW9WJLsOhdQC7cZ-vlsbQyUCtEnjFUf59WuIHv5gCFkQ&oe=6934A801" class="rounded-2xl shadow-2xl border-4 border-white/20 rotate-3 hover:rotate-0 transition-all duration-500 max-w-sm w-full bg-white object-contain" alt="eLibro Preview">
+                    <div class="md:w-2/5 flex justify-center relative">
+                        <!-- Decorative element -->
+                        <div class="absolute -inset-4 bg-orange-500/20 blur-3xl rounded-full opacity-50"></div>
+                        <img src="https://scontent.flpb3-2.fna.fbcdn.net/v/t39.30808-6/278794067_3065131150403380_5166123758741889535_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=OuEq8h2Dw4UQ7kNvwGqqwdA&_nc_oc=AdovG6zgbJg5F_fHu5jCTeVPvJ72Y548nIrDIn1UI3sB9pF2N9IsPZ832fojxQ8yrRg&_nc_zt=23&_nc_ht=scontent.flpb3-2.fna&_nc_gid=X1cvod_V1JkrQyOazNHCag&_nc_ss=7c289&oh=00_Af4ZOHbml1JCe3s0-e3FvygbcT7X3BvRB-Sy9rdrdeZJog&oe=6A08E981"
+                            class="rounded-2xl shadow-2xl border-4 border-white/20 rotate-3 hover:rotate-0 transition-all duration-500 max-w-[280px] w-full bg-white object-contain"
+                            alt="eLibro Preview">
                     </div>
                 </div>
             </div>
 
-            <!-- Stats Bar -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-5 hover-lift group">
-                        <div class="bg-orange-100 p-4 rounded-2xl text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                            <i data-lucide="book" class="w-8 h-8"></i>
+            <!-- Decorative Glow Line -->
+            <div class="w-full h-px bg-gradient-to-r from-transparent via-white/50 to-transparent relative z-30">
+                <div class="absolute inset-0 bg-white blur-sm opacity-20"></div>
+            </div>
+
+            <!-- Featured Stats Section: Dynamic & High Contrast -->
+            <div class="w-full bg-[#050b18] py-10 relative overflow-hidden border-y border-white/5">
+                <!-- Animated Background Elements -->
+                <div class="absolute top-0 left-1/4 w-64 h-64 bg-blue-600/20 rounded-full blur-[100px] animate-pulse"></div>
+                <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-orange-600/20 rounded-full blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        
+                        <!-- Stat 1: Data Assets -->
+                        <div class="relative group">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                            <div class="relative bg-slate-900 rounded-3xl p-6 flex items-center gap-6 border border-white/10 leading-none">
+                                <div class="bg-gradient-to-br from-orange-500 to-red-600 p-4 rounded-2xl text-white shadow-lg shadow-orange-500/40">
+                                    <i data-lucide="database" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <div class="text-4xl font-black text-white tracking-tight mb-2">167k+</div>
+                                    <div class="text-[10px] text-orange-400 font-bold uppercase tracking-[0.3em]">Data Assets</div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-4xl font-black text-slate-800">167k+</div>
-                            <div class="text-sm text-slate-500 font-bold uppercase tracking-wide">Títulos Disponibles</div>
+
+                        <!-- Stat 2: Global Nodes -->
+                        <div class="relative group">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                            <div class="relative bg-slate-900 rounded-3xl p-6 flex items-center gap-6 border border-white/10 leading-none">
+                                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 p-4 rounded-2xl text-white shadow-lg shadow-blue-500/40">
+                                    <i data-lucide="network" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <div class="text-4xl font-black text-white tracking-tight mb-2">603</div>
+                                    <div class="text-[10px] text-blue-400 font-bold uppercase tracking-[0.3em]">Global Nodes</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-5 hover-lift group">
-                        <div class="bg-blue-100 p-4 rounded-2xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                            <i data-lucide="building-2" class="w-8 h-8"></i>
+
+                        <!-- Stat 3: Authors Index -->
+                        <div class="relative group">
+                            <div class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                            <div class="relative bg-slate-900 rounded-3xl p-6 flex items-center gap-6 border border-white/10 leading-none">
+                                <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-4 rounded-2xl text-white shadow-lg shadow-indigo-500/40">
+                                    <i data-lucide="cpu" class="w-8 h-8"></i>
+                                </div>
+                                <div>
+                                    <div class="text-4xl font-black text-white tracking-tight mb-2">147k+</div>
+                                    <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-[0.3em]">Authors Index</div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="text-4xl font-black text-slate-800">603</div>
-                            <div class="text-sm text-slate-500 font-bold uppercase tracking-wide">Casas Editoriales</div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-5 hover-lift group">
-                        <div class="bg-green-100 p-4 rounded-2xl text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
-                            <i data-lucide="users" class="w-8 h-8"></i>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-black text-slate-800">147k+</div>
-                            <div class="text-sm text-slate-500 font-bold uppercase tracking-wide">Autores</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Services Grid (COLORIDO) -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-                <h2 class="text-3xl font-black text-slate-800 mb-8 flex items-center">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600">Servicios Destacados</span>
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    <!-- Card 1: Naranja (Unifranz) -->
-                    <div class="bg-gradient-to-br from-orange-500 to-red-600 p-8 rounded-3xl shadow-xl hover-lift text-white relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-md border border-white/20 shadow-inner">
-                            <i data-lucide="monitor-smartphone" class="w-8 h-8 text-white"></i>
+            <!-- Services Section: Bento Style Dynamic -->
+            <div class="w-full bg-slate-50 relative overflow-hidden">
+                <!-- Background Orbs for "Life" and "Color" -->
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[100px] animate-pulse"></div>
+                <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-400/10 rounded-full blur-[100px] animate-pulse" style="animation-delay: 3s;"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-50/50 rounded-full blur-[120px]"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+                    <div class="text-center mb-16">
+                    <span class="bg-blue-600/10 text-blue-600 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] border border-blue-600/20 mb-4 inline-block">Ecosistema Digital</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+                        Servicios <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Inteligentes</span>
+                    </h2>
+                    <p class="text-slate-500 text-lg max-w-2xl mx-auto font-medium">Potenciamos tu aprendizaje con herramientas de vanguardia diseñadas para la nueva era tecnológica.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <!-- Card 1: IA Search -->
+                    <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl shadow-blue-900/5 hover:shadow-2xl transition-all duration-700 border border-white hover:border-blue-300 overflow-hidden hover:-translate-y-4">
+                        <!-- Glow Halo -->
+                        <div class="absolute -inset-10 bg-blue-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <!-- Phantom Icon Background -->
+                        <div class="absolute -bottom-6 -right-6 text-blue-500/5 group-hover:text-blue-500/10 group-hover:scale-125 transition-all duration-1000 transform rotate-12">
+                            <i data-lucide="brain-circuit" class="w-40 h-40"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-3">Sistema Virtual Académico</h3>
-                        <p class="text-orange-50 text-base font-medium leading-relaxed">Diseñado a medida para las necesidades modernas de Bibliotecas Universitarias.</p>
+
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-600/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                <i data-lucide="brain-circuit" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800 mb-4 tracking-tight">Búsqueda IA</h3>
+                            <p class="text-slate-500 text-base leading-relaxed font-medium mb-6">Descubrimiento inteligente mediante procesamiento de lenguaje natural avanzado.</p>
+                            <div class="flex items-center text-blue-600 text-sm font-bold gap-2 group-hover:translate-x-2 transition-transform duration-300">
+                                Explorar tecnología <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
                     </div>
 
-                    <!-- Card 2: Azul (Confianza/Académico) -->
-                    <div class="bg-gradient-to-br from-blue-600 to-indigo-800 p-8 rounded-3xl shadow-xl hover-lift text-white relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-md border border-white/20 shadow-inner">
-                            <i data-lucide="languages" class="w-8 h-8 text-white"></i>
+                    <!-- Card 2: Infrastructure -->
+                    <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl shadow-orange-900/5 hover:shadow-2xl transition-all duration-700 border border-white hover:border-orange-300 overflow-hidden hover:-translate-y-4">
+                        <!-- Glow Halo -->
+                        <div class="absolute -inset-10 bg-orange-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <!-- Phantom Icon Background -->
+                        <div class="absolute -bottom-6 -right-6 text-orange-500/5 group-hover:text-orange-500/10 group-hover:scale-125 transition-all duration-1000 transform rotate-12">
+                            <i data-lucide="terminal" class="w-40 h-40"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-3">Bibliografía en Español</h3>
-                        <p class="text-blue-50 text-base font-medium leading-relaxed">La mayor provisión de textos académico-educativos en tu idioma nativo.</p>
+
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-orange-500/30 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
+                                <i data-lucide="terminal" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800 mb-4 tracking-tight">Infraestructura</h3>
+                            <p class="text-slate-500 text-base leading-relaxed font-medium mb-6">Nodos redundantes de alta velocidad para una disponibilidad del 99.9%.</p>
+                            <div class="flex items-center text-orange-600 text-sm font-bold gap-2 group-hover:translate-x-2 transition-transform duration-300">
+                                Ver rendimiento <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-orange-500 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
                     </div>
 
-                    <!-- Card 3: Gris Oscuro (Seriedad/Legal) -->
-                    <div class="bg-gradient-to-br from-slate-700 to-black p-8 rounded-3xl shadow-xl hover-lift text-white relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-md border border-white/20 shadow-inner">
-                            <i data-lucide="scale" class="w-8 h-8 text-white"></i>
+                    <!-- Card 3: Accessibility -->
+                    <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl shadow-emerald-900/5 hover:shadow-2xl transition-all duration-700 border border-white hover:border-emerald-300 overflow-hidden hover:-translate-y-4">
+                        <!-- Glow Halo -->
+                        <div class="absolute -inset-10 bg-emerald-500/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-teal-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <!-- Phantom Icon Background -->
+                        <div class="absolute -bottom-6 -right-6 text-emerald-500/5 group-hover:text-emerald-500/10 group-hover:scale-125 transition-all duration-1000 transform rotate-12">
+                            <i data-lucide="infinity" class="w-40 h-40"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-3">Propiedad Intelectual</h3>
-                        <p class="text-slate-300 text-base font-medium leading-relaxed">Respeto absoluto por los derechos de autor y licencias editoriales.</p>
+
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-emerald-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                                <i data-lucide="infinity" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800 mb-4 tracking-tight">Accesibilidad</h3>
+                            <p class="text-slate-500 text-base leading-relaxed font-medium mb-6">Diseño inclusivo optimizado para una experiencia global sin límites.</p>
+                            <div class="flex items-center text-emerald-600 text-sm font-bold gap-2 group-hover:translate-x-2 transition-transform duration-300">
+                                Más información <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
                     </div>
 
-                    <!-- Card 4: Verde Esmeralda (Inclusión/Positivo) -->
-                    <div class="bg-gradient-to-br from-emerald-500 to-teal-700 p-8 rounded-3xl shadow-xl hover-lift text-white relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white opacity-10 rounded-full blur-3xl group-hover:opacity-20 transition-opacity"></div>
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 backdrop-blur-md border border-white/20 shadow-inner">
-                            <i data-lucide="accessibility" class="w-8 h-8 text-white"></i>
+                    <!-- Card 4: Security -->
+                    <div class="group relative bg-white/90 backdrop-blur-md rounded-[2.5rem] p-8 shadow-xl shadow-slate-900/5 hover:shadow-2xl transition-all duration-700 border border-white hover:border-slate-400 overflow-hidden hover:-translate-y-4">
+                        <!-- Glow Halo -->
+                        <div class="absolute -inset-10 bg-slate-500/10 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-800/5 via-transparent to-slate-900/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        
+                        <!-- Phantom Icon Background -->
+                        <div class="absolute -bottom-6 -right-6 text-slate-900/5 group-hover:text-slate-900/10 group-hover:scale-125 transition-all duration-1000 transform rotate-12">
+                            <i data-lucide="shield-check" class="w-40 h-40"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-3">Accesibilidad Total</h3>
-                        <p class="text-emerald-50 text-base font-medium leading-relaxed">Optimización técnica continua enfocada en la inclusión social.</p>
+
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-slate-800/30 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
+                                <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800 mb-4 tracking-tight">Seguridad</h3>
+                            <p class="text-slate-500 text-base leading-relaxed font-medium mb-6">Encriptación de grado militar protegiendo cada flujo de información.</p>
+                            <div class="flex items-center text-slate-800 text-sm font-bold gap-2 group-hover:translate-x-2 transition-transform duration-300">
+                                Seguridad ética <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-slate-700 to-slate-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
                     </div>
 
                 </div>
@@ -288,131 +508,320 @@
         </section>
 
         <!-- ============================================ -->
-        <!-- PESTAÑA 2: COLECCIONES (Visual Cards)        -->
+        <!-- PESTAÑA 2: INVESTIGACIÓN (Visual Cards)      -->
         <!-- ============================================ -->
-        <section id="section-colecciones" class="hidden-section fade-in-up space-y-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            
-            <!-- Banner Exclusivo -->
-            <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 rounded-3xl p-10 text-white shadow-2xl flex flex-col md:flex-row justify-between items-center relative overflow-hidden border-2 border-indigo-500/30">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500 opacity-20 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
-                <div class="relative z-10 md:w-2/3">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Premium</span>
-                        <span class="text-blue-200 text-xs font-bold tracking-widest uppercase">Exclusivo Unifranz</span>
-                    </div>
-                    <h2 class="text-4xl font-black mb-4 leading-tight">Acceso a las 2 Grandes Colecciones</h2>
-                    <p class="text-blue-100 text-lg opacity-90 font-medium">Tu universidad te conecta con los recursos más importantes de la plataforma a nivel mundial.</p>
+        <section id="section-investigacion" class="hidden-section fade-in-up space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+            <!-- ============================================ -->
+            <!-- 1. HERO: ECOSISTEMA DE INVESTIGACIÓN       -->
+            <!-- ============================================ -->
+            <div class="relative rounded-[3rem] overflow-hidden bg-slate-900 shadow-2xl border border-white/10 group">
+                <!-- Background Image -->
+                <div class="absolute inset-0 opacity-40 group-hover:scale-105 transition-transform duration-[2000ms]">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" class="w-full h-full object-cover" alt="Research Background">
                 </div>
-                <div class="relative z-10 mt-8 md:mt-0">
-                    <div class="bg-white/10 p-6 rounded-full backdrop-blur-md border border-white/20">
-                        <i data-lucide="unlock" class="w-12 h-12 text-orange-400"></i>
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/60 to-transparent"></div>
+                
+                <div class="relative z-10 p-10 md:p-16 max-w-3xl">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-black uppercase tracking-[0.2em] mb-6">
+                        <i data-lucide="microscope" class="w-4 h-4"></i> Innovación Unifranz
+                    </span>
+                    <h2 class="text-5xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tighter">
+                        Ecosistema de <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Investigación</span>
+                    </h2>
+                    <p class="text-slate-300 text-xl font-medium leading-relaxed">
+                        Impulsamos la innovación, creatividad y el desarrollo científico-tecnológico a través de nuestros centros especializados y recursos globales.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- 2. CENTROS DE INVESTIGACIÓN                -->
+            <!-- ============================================ -->
+            <div class="space-y-10">
+                <div class="text-center space-y-4">
+                    <h3 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-3">
+                        <span class="h-px w-12 bg-slate-200"></span>
+                        Centros de Investigación
+                        <span class="h-px w-12 bg-slate-200"></span>
+                    </h3>
+                    <p class="text-slate-500 font-medium max-w-2xl mx-auto italic">"UNIFRANZ trabaja desde su misión y visión para impulsar la innovación, creatividad e investigación promoviendo el desarrollo humano, científico y tecnológico"</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- CIINTUR -->
+                    <a href="https://ciintur.unifranzelalto.com/" target="_blank" class="group relative bg-white p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-blue-600 flex flex-col items-center text-center hover:-translate-y-2">
+                        <div class="h-32 w-full flex items-center justify-center mb-10">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/ciintur-300x150.webp" alt="CIINTUR" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] group-hover:tracking-[0.4em] transition-all">Ver Centro CIINTUR</span>
+                            <div class="h-0.5 w-0 group-hover:w-full bg-blue-600 transition-all duration-500 mx-auto mt-2"></div>
+                        </div>
+                    </a>
+
+                    <!-- IME -->
+                    <a href="https://ime.bo/" target="_blank" class="group relative bg-white p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-rose-600 flex flex-col items-center text-center hover:-translate-y-2">
+                        <div class="h-32 w-full flex items-center justify-center mb-10">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/ime-300x150.webp" alt="IME" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-[10px] font-black text-rose-600 uppercase tracking-[0.3em] group-hover:tracking-[0.4em] transition-all">Explorar IME</span>
+                            <div class="h-0.5 w-0 group-hover:w-full bg-rose-600 transition-all duration-500 mx-auto mt-2"></div>
+                        </div>
+                    </a>
+
+                    <!-- INU -->
+                    <a href="https://www.facebook.com/p/Instituto-de-Neurociencia-Unifranz-INU-100064846721122/" target="_blank" class="group relative bg-white p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-orange-600 flex flex-col items-center text-center hover:-translate-y-2">
+                        <div class="h-32 w-full flex items-center justify-center mb-10">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/inu-300x150.webp" alt="INU" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-[10px] font-black text-orange-600 uppercase tracking-[0.3em] group-hover:tracking-[0.4em] transition-all">Conocer INU</span>
+                            <div class="h-0.5 w-0 group-hover:w-full bg-orange-600 transition-all duration-500 mx-auto mt-2"></div>
+                        </div>
+                    </a>
+
+                    <!-- ipee -->
+                    <a href="https://ipee.org.bo/" target="_blank" class="group relative bg-white p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-emerald-600 flex flex-col items-center text-center hover:-translate-y-2">
+                        <div class="h-32 w-full flex items-center justify-center mb-10">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/ipee-300x150.webp" alt="ipee" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-[0.3em] group-hover:tracking-[0.4em] transition-all">Visitar ipee</span>
+                            <div class="h-0.5 w-0 group-hover:w-full bg-emerald-600 transition-all duration-500 mx-auto mt-2"></div>
+                        </div>
+                    </a>
+
+                    <!-- NIHR -->
+                    <a href="https://nihrlatamcentre.com/es/inicio" target="_blank" class="group relative bg-white p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-indigo-600 flex flex-col items-center text-center hover:-translate-y-2">
+                        <div class="h-32 w-full flex items-center justify-center mb-10">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/nihr-300x150.webp" alt="NIHR" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] group-hover:tracking-[0.4em] transition-all">Portal NIHR</span>
+                            <div class="h-0.5 w-0 group-hover:w-full bg-indigo-600 transition-all duration-500 mx-auto mt-2"></div>
+                        </div>
+                    </a>
+
+                    <!-- Observatorio -->
+                    <a href="https://ont.bolivia.bo/" target="_blank" class="group relative bg-white p-10 rounded-[2rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-slate-700 flex flex-col items-center text-center hover:-translate-y-2">
+                        <div class="h-32 w-full flex items-center justify-center mb-10">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/ont-300x150.webp" alt="Observatorio" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="mt-auto">
+                            <span class="text-[10px] font-black text-slate-700 uppercase tracking-[0.3em] group-hover:tracking-[0.4em] transition-all">Ver Observatorio</span>
+                            <div class="h-0.5 w-0 group-hover:w-full bg-slate-700 transition-all duration-500 mx-auto mt-2"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- 3. PRODUCCIÓN ACADÉMICA-CIENTÍFICA         -->
+            <!-- ============================================ -->
+            <div class="bg-slate-50 rounded-[3rem] p-12 border border-slate-200 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                    <i data-lucide="book-check" class="w-64 h-64"></i>
+                </div>
+                
+                <h3 class="text-3xl font-black text-slate-900 mb-12 flex items-center gap-4">
+                    <div class="w-2 h-8 bg-blue-600 rounded-full"></div>
+                    Producción Académica-Científica
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Revista de Investigacion -->
+                    <a href="https://bibliovirtual.unifranz.edu.bo/cgi-bin/koha/opac-search.pl?idx=kw&q=Rinf&sort_by=relevance_dsc&count=20&limit=su-to:Rinf" target="_blank" class="group relative bg-white rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-700 overflow-hidden border border-slate-100 hover:border-blue-500/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        <div class="relative z-10 flex flex-col items-center justify-center text-center space-y-6">
+                            <div class="h-40 flex items-center justify-center">
+                                <img src="https://unifranz.edu.bo/wp-content/uploads/2024/07/icono-revista-de-investigacion-300x150.webp" alt="Revista" class="w-full object-contain group-hover:scale-110 transition-transform duration-700 drop-shadow-xl rounded-2xl">
+                            </div>
+                            <div class="space-y-4">
+                                <p class="text-slate-500 text-sm font-bold leading-relaxed max-w-xs group-hover:text-blue-600 transition-colors">Publicaciones científicas de alto impacto y rigor académico institucional.</p>
+                                <span class="inline-block px-8 py-3 rounded-xl bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-blue-500/40 group-hover:-translate-y-1 transition-all">Ver publicaciones</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Boletines -->
+                    <a href="https://bibliovirtual.unifranz.edu.bo/cgi-bin/koha/opac-search.pl?idx=&q=Bolet%C3%ADn+Neurociencias&branch_group_limit=&weight_search=1" target="_blank" class="group relative bg-white rounded-[2.5rem] p-10 shadow-lg hover:shadow-2xl transition-all duration-700 overflow-hidden border border-slate-100 hover:border-orange-500/30">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        <div class="relative z-10 flex flex-col items-center justify-center text-center space-y-6">
+                            <div class="h-40 flex items-center justify-center">
+                                <img src="https://unifranz.edu.bo/wp-content/uploads/2024/07/icono-boletines-de-neurociencia-300x150.webp" alt="Boletines" class="w-full object-contain group-hover:scale-110 transition-transform duration-700 drop-shadow-xl rounded-2xl">
+                            </div>
+                            <div class="space-y-4">
+                                <p class="text-slate-500 text-sm font-bold leading-relaxed max-w-xs group-hover:text-orange-600 transition-colors">Explorando las fronteras de la mente y el cerebro humano en profundidad.</p>
+                                <span class="inline-block px-8 py-3 rounded-xl bg-orange-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-orange-500/40 group-hover:-translate-y-1 transition-all">Explorar boletines</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- 4. RECURSOS Y BIBLIOTECAS DIGITALES        -->
+            <!-- ============================================ -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Investigacion Link -->
+                <div class="lg:col-span-1 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] p-10 text-white shadow-xl flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute -right-10 -top-10 opacity-10 group-hover:scale-125 transition-transform duration-700">
+                        <i data-lucide="search" class="w-48 h-48"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-3xl font-black mb-6 leading-tight">Recursos en Investigación</h4>
+                        <div class="h-24 flex items-center mb-8">
+                            <img src="https://unifranz.edu.bo/wp-content/uploads/2024/07/icono-recursos-de-investigacion-300x150.webp" alt="Recursos" class="max-h-full object-contain filter brightness-0 invert group-hover:scale-110 transition-transform">
+                        </div>
+                    </div>
+                    <a href="https://new.express.adobe.com/webpage/rwnIcmGzCLKj5?" target="_blank" class="bg-white text-blue-600 py-4 px-6 rounded-2xl font-black text-center uppercase tracking-widest shadow-xl hover:bg-slate-100 transition-colors">Acceder ahora</a>
+                </div>
+
+                <!-- Digital Resources Subscriptions -->
+                <div class="lg:col-span-2 bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
+                            <i data-lucide="shield-check" class="text-emerald-500"></i>
+                            Recursos digitales con suscripción
+                        </h4>
+                        <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+                            <a href="https://unifranz.turnitin.com/home/sign-in" target="_blank" class="hover:scale-105 transition-transform flex items-center gap-6 group">
+                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 shadow-sm group-hover:shadow-md transition-all">
+                                    <img src="https://unifranz.edu.bo/wp-content/uploads/2024/06/turnitin-300x150.webp" alt="Turnitin" class="h-16 object-contain transition-all">
+                                </div>
+                                <div>
+                                    <h5 class="text-xl font-black text-slate-800 tracking-tight">Acceso a Turnitin</h5>
+                                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Portal de Integridad Académica</p>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- Turnitin Clarification -->
+                        <div class="bg-emerald-50 border border-emerald-100 rounded-3xl p-6 flex items-start gap-5 shadow-sm group">
+                            <div class="bg-emerald-500 text-white p-3 rounded-2xl shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-500">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <p class="text-emerald-900 font-black text-xl tracking-tight">¡Potencia tu Integridad Académica!</p>
+                                <div class="space-y-2">
+                                    <p class="text-emerald-800 text-sm leading-relaxed">
+                                        <span class="font-black text-emerald-900">👩‍🏫 Docentes:</span> 
+                                        Ingreso directo con <span class="bg-emerald-200/50 px-1 rounded font-bold">correo institucional</span>. <br>
+                                        <span class="text-[10px] opacity-70 italic">(Ej: doc.roly.lazaro.ca@unifranz.edu.bo)</span>. ¡Sus cuentas están listas!
+                                    </p>
+                                    <p class="text-emerald-800 text-sm leading-relaxed">
+                                        <span class="font-black text-emerald-900">👨‍🎓 Estudiantes:</span> 
+                                        Les esperamos en las <span class="font-bold underline decoration-emerald-400">computadoras o tablets</span> de biblioteca. ¡Vengan a aprovechar esta herramienta!
+                                    </p>
+                                </div>
+                                <div class="pt-2 flex items-center gap-3">
+                                    <span class="bg-emerald-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest animate-pulse shadow-md shadow-emerald-500/30">
+                                        ¡Los esperamos con gusto!
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Cards de Colecciones -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- ============================================ -->
+            <!-- 5. JORNADAS UNIFRANZ DE INVESTIGACIÓN     -->
+            <!-- ============================================ -->
+            <div class="bg-white rounded-[3rem] shadow-2xl border border-slate-200 p-10 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"></div>
                 
-                <!-- Card Catedra (Colorido: Azul Corporativo) -->
-                <div class="bg-gradient-to-br from-slate-900 to-blue-900 rounded-3xl shadow-2xl overflow-hidden hover-lift flex flex-col relative group border border-slate-700">
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:opacity-20 transition-opacity"></div>
-                    
-                    <div class="p-10 flex-grow flex flex-col relative z-10">
-                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-md shadow-inner border border-white/10 group-hover:scale-110 transition-transform">
-                            <i data-lucide="book-open" class="text-blue-300 w-8 h-8"></i>
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div class="max-w-2xl">
+                        <span class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-4 block">Evento Institucional</span>
+                        <h3 class="text-5xl font-black text-slate-900 tracking-tighter">Jornadas Unifranz de <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Investigación</span></h3>
+                    </div>
+                    <div class="flex items-center gap-2 px-6 py-3 bg-slate-100 rounded-2xl text-slate-600 font-bold border border-slate-200">
+                        <i data-lucide="archive" class="w-5 h-5 text-indigo-500"></i>
+                        Archivo Histórico
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- I-2021 -->
+                    <div class="group bg-white p-8 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-blue-600 flex flex-col hover:-translate-y-2">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-16 h-16 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-3xl font-black shadow-lg shadow-blue-500/30 group-hover:rotate-6 transition-transform">I</div>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-blue-600 transition-colors">Gestión 2021</span>
                         </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-8 tracking-tight">Primer Encuentro Científico</h4>
+                        <a href="#" class="mt-auto flex items-center justify-center gap-3 bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 group-hover:border-blue-400 hover:bg-blue-600 hover:text-white transition-all text-xs font-black uppercase tracking-widest text-slate-700">
+                            <i data-lucide="file-down" class="w-5 h-5"></i> Cronograma <span class="opacity-50 font-medium">[1MB]</span>
+                        </a>
+                    </div>
+
+                    <!-- II-2022 -->
+                    <div class="group bg-white p-8 rounded-[2.5rem] shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 border-emerald-500 flex flex-col hover:-translate-y-2">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-16 h-16 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-3xl font-black shadow-lg shadow-emerald-500/30 group-hover:-rotate-6 transition-transform">II</div>
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-emerald-600 transition-colors">Gestión 2022</span>
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-8 tracking-tight">Consolidación de Nodos</h4>
+                        <a href="#" class="mt-auto flex items-center justify-center gap-3 bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 group-hover:border-emerald-400 hover:bg-emerald-600 hover:text-white transition-all text-xs font-black uppercase tracking-widest text-slate-700">
+                            <i data-lucide="file-down" class="w-5 h-5"></i> Cronograma <span class="opacity-50 font-medium">[1.5MB]</span>
+                        </a>
+                    </div>
+
+                    <!-- III-2023: Special Card -->
+                    <div class="md:col-span-2 group bg-slate-900 rounded-[2.5rem] p-10 relative overflow-hidden border border-white/5 shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-transparent to-purple-600/20"></div>
                         
-                        <h3 class="text-3xl font-black text-white mb-4">eLibro Cátedra</h3>
-                        <p class="text-blue-100 text-base mb-8 flex-grow leading-relaxed font-medium">
-                            La colección insignia. Contenidos de las prensas universitarias más destacadas del mundo. El recurso fundamental para bibliografía en español.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-3 mt-auto">
-                            <span class="px-4 py-2 bg-white/10 text-blue-200 text-xs font-bold rounded-lg border border-white/10 hover:bg-white/20 transition-colors">Multidisciplinario</span>
-                            <span class="px-4 py-2 bg-white/10 text-blue-200 text-xs font-bold rounded-lg border border-white/10 hover:bg-white/20 transition-colors">Prensas Universitarias</span>
+                        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                            <div class="flex items-center gap-8 text-center md:text-left">
+                                <div class="w-20 h-20 rounded-3xl bg-indigo-600 text-white flex items-center justify-center text-4xl font-black shadow-2xl shadow-indigo-600/40 border border-white/10 group-hover:scale-110 transition-transform">III</div>
+                                <div>
+                                    <h4 class="text-3xl font-black text-white tracking-tighter mb-2">Gestión 2023</h4>
+                                    <p class="text-indigo-400 font-bold uppercase tracking-widest text-sm">Expansión de Conocimiento Global</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-4 justify-center">
+                                <a href="#" class="flex items-center gap-3 bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-5 rounded-2xl font-black uppercase tracking-widest shadow-xl transition-all hover:-translate-y-1">
+                                    <i data-lucide="download" class="w-6 h-6"></i> Cronograma <span class="text-indigo-200 font-medium">[1.2MB]</span>
+                                </a>
+                                <a href="#" class="flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white px-8 py-5 rounded-2xl font-black uppercase tracking-widest backdrop-blur-md border border-white/10 shadow-xl transition-all hover:-translate-y-1">
+                                    <i data-lucide="file-text" class="w-6 h-6"></i> Cuaderno <span class="text-slate-400 font-medium">[1.3MB]</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Card English (Colorido: Naranja/Rojo Vibrante) -->
-                <div class="bg-gradient-to-br from-orange-600 to-rose-700 rounded-3xl shadow-2xl overflow-hidden hover-lift flex flex-col relative group border border-orange-500/30">
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-400 opacity-10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:opacity-20 transition-opacity"></div>
-
-                    <div class="p-10 flex-grow flex flex-col relative z-10">
-                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-md shadow-inner border border-white/10 group-hover:scale-110 transition-transform">
-                            <i data-lucide="globe" class="text-white w-8 h-8"></i>
-                        </div>
-
-                        <h3 class="text-3xl font-black text-white mb-4">eLibro English</h3>
-                        <p class="text-orange-50 text-base mb-8 flex-grow leading-relaxed font-medium">
-                            Biblioteca virtual innovadora con más de <strong class="text-white">30,000 títulos</strong> multidisciplinarios de las más prestigiosas editoriales en idioma inglés.
-                        </p>
-                        
-                        <div class="flex flex-wrap gap-3 mt-auto">
-                            <span class="px-4 py-2 bg-white/20 text-white text-xs font-bold rounded-lg border border-white/10 hover:bg-white/30 transition-colors">Idioma Inglés</span>
-                            <span class="px-4 py-2 bg-white/20 text-white text-xs font-bold rounded-lg border border-white/10 hover:bg-white/30 transition-colors">30k+ Títulos</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Top Reads -->
-            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-8 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 to-red-500"></div>
-                <div class="flex items-center mb-8">
-                    <div class="bg-orange-100 p-3 rounded-xl mr-4 text-orange-600">
-                        <i data-lucide="trending-up" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-800">Lo más leído en Medicina</h3>
-                </div>
-                
-                <div class="space-y-4">
-                    <!-- Item 1 -->
-                    <div class="flex items-center p-5 bg-slate-50 rounded-2xl transition-all hover:bg-white hover:shadow-lg border border-slate-100 hover:border-orange-200 group cursor-default">
-                        <span class="text-4xl font-black text-slate-200 mr-6 group-hover:text-orange-500 transition-colors">01</span>
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-lg">Anatomía humana: atlas, imágenes y texto</h4>
-                            <span class="text-xs text-white bg-orange-500 px-2 py-1 rounded font-bold uppercase mt-1 inline-block">Ciencias de la Salud</span>
-                        </div>
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="flex items-center p-5 bg-slate-50 rounded-2xl transition-all hover:bg-white hover:shadow-lg border border-slate-100 hover:border-orange-200 group cursor-default">
-                        <span class="text-4xl font-black text-slate-200 mr-6 group-hover:text-blue-500 transition-colors">02</span>
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-lg">Fisiología médica: fundamentos de medicina clínica</h4>
-                            <span class="text-xs text-slate-500 font-bold uppercase mt-1 inline-block">Manual esencial</span>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="flex items-center p-5 bg-slate-50 rounded-2xl transition-all hover:bg-white hover:shadow-lg border border-slate-100 hover:border-orange-200 group cursor-default">
-                        <span class="text-4xl font-black text-slate-200 mr-6 group-hover:text-green-500 transition-colors">03</span>
-                        <div>
-                            <h4 class="font-bold text-slate-800 text-lg">Salud pública y medicina preventiva</h4>
-                            <span class="text-xs text-slate-500 font-bold uppercase mt-1 inline-block">Guía para estudiantes</span>
-                        </div>
-                    </div>
-                </div>
+                    <!-- IV-2024 -->
+                    <div class="md:col-span-2 group bg-slate-50 p-8 rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-200 text-slate-400 flex items-center justify-center text-xl font-black mb-4">IV</div>
+                        <h4 class="text-xl font-black text-slate-400 uppercase tracking-widest">Gestión 2024</h4>
             </div>
         </section>
 
         <!-- ============================================ -->
         <!-- PESTAÑA 3: TUTORIALES (Video Gallery)        -->
         <!-- ============================================ -->
-        <section id="section-tutoriales" class="hidden-section fade-in-up space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            
+        <section id="section-tutoriales"
+            class="hidden-section fade-in-up space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
             <!-- Herramientas de Busqueda (Toolbar) -->
             <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
-                <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 text-center">Accesos Directos a Biblioteca</h3>
+                <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 text-center">Accesos
+                    Directos a Biblioteca</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <a href="https://bibliovirtual.unifranz.edu.bo/" target="_blank" class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-900 text-white py-4 px-6 rounded-2xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1">
+                    <a href="https://bibliovirtual.unifranz.edu.bo/" target="_blank"
+                        class="flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-900 text-white py-4 px-6 rounded-2xl font-bold transition-all shadow-md hover:shadow-xl hover:-translate-y-1">
                         <i data-lucide="search" class="w-5 h-5"></i> Búsqueda General
                     </a>
-                    <a href="https://bibliovirtual.unifranz.edu.bo/cgi-bin/koha/opac-search.pl" target="_blank" class="flex items-center justify-center gap-3 bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 hover:border-slate-300 py-4 px-6 rounded-2xl font-bold transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
+                    <a href="https://bibliovirtual.unifranz.edu.bo/cgi-bin/koha/opac-search.pl" target="_blank"
+                        class="flex items-center justify-center gap-3 bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 hover:border-slate-300 py-4 px-6 rounded-2xl font-bold transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
                         <i data-lucide="sliders-horizontal" class="w-5 h-5 text-orange-500"></i> Búsqueda Avanzada
                     </a>
-                    <a href="https://bibliovirtual.unifranz.edu.bo/cgi-bin/koha/opac-shelves.pl?op=view&shelfnumber=107&sortfield=title" target="_blank" class="flex items-center justify-center gap-3 bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 hover:border-slate-300 py-4 px-6 rounded-2xl font-bold transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
+                    <a href="https://bibliovirtual.unifranz.edu.bo/cgi-bin/koha/opac-shelves.pl?op=view&shelfnumber=107&sortfield=title"
+                        target="_blank"
+                        class="flex items-center justify-center gap-3 bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 hover:border-slate-300 py-4 px-6 rounded-2xl font-bold transition-all shadow-sm hover:shadow-md hover:-translate-y-1">
                         <i data-lucide="folder-search" class="w-5 h-5 text-blue-500"></i> Trabajo IRO MED Cba.
                     </a>
                 </div>
@@ -424,79 +833,122 @@
                     <div class="bg-gradient-to-r from-orange-500 to-red-500 w-2 h-10 rounded-full"></div>
                     <h2 class="text-3xl font-black text-slate-800">Dominio de Plataforma</h2>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                     <!-- Video 1 -->
-                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
-                        <a href="https://www.youtube.com/watch?v=o6MwimbDzIY" target="_blank" class="relative h-56 bg-slate-900 overflow-hidden block">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10 flex items-center justify-center">
-                                <div class="bg-white/30 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
+                    <div
+                        class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
+                        <a href="https://www.youtube.com/watch?v=o6MwimbDzIY" target="_blank"
+                            class="relative h-56 bg-slate-900 overflow-hidden block">
+                            <div
+                                class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10 flex items-center justify-center">
+                                <div
+                                    class="bg-white/30 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
                                     <i data-lucide="play" class="w-8 h-8 text-white fill-current"></i>
                                 </div>
                             </div>
-                            <img src="https://img.youtube.com/vi/o6MwimbDzIY/maxresdefault.jpg" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJd0jZ_eVMLHK7AvaEob8IEf7OK7x4bx43w&s'" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" alt="Video Thumbnail">
-                            <div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-lg">
+                            <img src="https://img.youtube.com/vi/o6MwimbDzIY/maxresdefault.jpg"
+                                onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJd0jZ_eVMLHK7AvaEob8IEf7OK7x4bx43w&s'"
+                                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                                alt="Video Thumbnail">
+                            <div
+                                class="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-lg">
                                 <i data-lucide="youtube" class="w-3 h-3 inline mr-1"></i> Tutorial
                             </div>
                         </a>
                         <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Nueva Plataforma de Servicios</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Conoce la interfaz moderna y las nuevas funcionalidades para aprovechar al máximo.</p>
-                            <span class="text-xs font-black text-orange-500 uppercase tracking-wide bg-orange-50 px-3 py-1 rounded-lg self-start">Novedades</span>
+                            <h3
+                                class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">
+                                Nueva Plataforma de Servicios</h3>
+                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Conoce la
+                                interfaz moderna y las nuevas funcionalidades para aprovechar al máximo.</p>
+                            <span
+                                class="text-xs font-black text-orange-500 uppercase tracking-wide bg-orange-50 px-3 py-1 rounded-lg self-start">Novedades</span>
                         </div>
                     </div>
 
                     <!-- Video 2 -->
-                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
-                        <a href="https://www.youtube.com/watch?v=yiCDCjKOVq0" target="_blank" class="relative h-56 bg-slate-900 overflow-hidden block">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10 flex items-center justify-center">
-                                <div class="bg-white/30 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
+                    <div
+                        class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
+                        <a href="https://www.youtube.com/watch?v=yiCDCjKOVq0" target="_blank"
+                            class="relative h-56 bg-slate-900 overflow-hidden block">
+                            <div
+                                class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10 flex items-center justify-center">
+                                <div
+                                    class="bg-white/30 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
                                     <i data-lucide="play" class="w-8 h-8 text-white fill-current"></i>
                                 </div>
                             </div>
-                            <img src="https://img.youtube.com/vi/yiCDCjKOVq0/maxresdefault.jpg" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" alt="Video Thumbnail">
+                            <img src="https://img.youtube.com/vi/yiCDCjKOVq0/maxresdefault.jpg"
+                                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                                alt="Video Thumbnail">
                         </a>
                         <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Herramientas de Búsqueda</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Aprende a filtrar y encontrar lo que necesitas rápidamente con búsquedas avanzadas.</p>
-                            <span class="text-xs font-black text-blue-500 uppercase tracking-wide bg-blue-50 px-3 py-1 rounded-lg self-start">Búsqueda</span>
+                            <h3
+                                class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">
+                                Herramientas de Búsqueda</h3>
+                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Aprende a
+                                filtrar y encontrar lo que necesitas rápidamente con búsquedas avanzadas.</p>
+                            <span
+                                class="text-xs font-black text-blue-500 uppercase tracking-wide bg-blue-50 px-3 py-1 rounded-lg self-start">Búsqueda</span>
                         </div>
                     </div>
 
                     <!-- Video 3 -->
-                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
-                        <a href="https://www.youtube.com/watch?v=r3A_vxlwzeY" target="_blank" class="relative h-56 bg-slate-900 overflow-hidden block">
-                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10 flex items-center justify-center">
-                                <div class="bg-white/30 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
+                    <div
+                        class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
+                        <a href="https://www.youtube.com/watch?v=r3A_vxlwzeY" target="_blank"
+                            class="relative h-56 bg-slate-900 overflow-hidden block">
+                            <div
+                                class="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all z-10 flex items-center justify-center">
+                                <div
+                                    class="bg-white/30 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
                                     <i data-lucide="play" class="w-8 h-8 text-white fill-current"></i>
                                 </div>
                             </div>
-                            <img src="https://img.youtube.com/vi/r3A_vxlwzeY/maxresdefault.jpg" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" alt="Video Thumbnail">
+                            <img src="https://img.youtube.com/vi/r3A_vxlwzeY/maxresdefault.jpg"
+                                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                                alt="Video Thumbnail">
                         </a>
                         <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Lectura Online y Offline</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Usa el lector, haz anotaciones, sombreados y descarga libros para leer sin internet.</p>
-                            <span class="text-xs font-black text-green-500 uppercase tracking-wide bg-green-50 px-3 py-1 rounded-lg self-start">Herramientas</span>
+                            <h3
+                                class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">
+                                Lectura Online y Offline</h3>
+                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Usa el lector,
+                                haz anotaciones, sombreados y descarga libros para leer sin internet.</p>
+                            <span
+                                class="text-xs font-black text-green-500 uppercase tracking-wide bg-green-50 px-3 py-1 rounded-lg self-start">Herramientas</span>
                         </div>
                     </div>
-                    
+
                     <!-- Video 4 (Drive Link Placeholder Style) -->
-                    <div class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
-                        <a href="https://drive.google.com/file/d/1QA6q_aXNUQmCxgRPjq1m321aZmytJNth/view?usp=sharing" target="_blank" class="relative h-56 bg-slate-800 overflow-hidden block flex items-center justify-center group-hover:bg-slate-700 transition-colors">
+                    <div
+                        class="bg-white rounded-3xl shadow-md overflow-hidden hover-lift flex flex-col h-full border border-slate-100 group">
+                        <a href="https://drive.google.com/file/d/1QA6q_aXNUQmCxgRPjq1m321aZmytJNth/view?usp=sharing"
+                            target="_blank"
+                            class="relative h-56 bg-slate-800 overflow-hidden block flex items-center justify-center group-hover:bg-slate-700 transition-colors">
                             <div class="absolute inset-0 bg-black/10 z-10 flex items-center justify-center">
-                                <div class="bg-white/20 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
+                                <div
+                                    class="bg-white/20 backdrop-blur-md p-4 rounded-full group-hover:scale-110 transition-transform shadow-2xl border border-white/40">
                                     <i data-lucide="play" class="w-8 h-8 text-white fill-current"></i>
                                 </div>
                             </div>
-                            <i data-lucide="globe" class="text-slate-600 w-32 h-32 opacity-20 group-hover:scale-125 transition-transform duration-700"></i>
-                            <div class="absolute bottom-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-lg">
+                            <i data-lucide="globe"
+                                class="text-slate-600 w-32 h-32 opacity-20 group-hover:scale-125 transition-transform duration-700"></i>
+                            <div
+                                class="absolute bottom-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1 rounded-lg">
                                 <i data-lucide="file-video" class="w-3 h-3 inline mr-1"></i> Drive
                             </div>
                         </a>
                         <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">Acceso desde Web Unifranz</h3>
-                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Tutorial paso a paso para ingresar correctamente desde el portal oficial.</p>
-                            <span class="text-xs font-black text-purple-500 uppercase tracking-wide bg-purple-50 px-3 py-1 rounded-lg self-start">Acceso Web</span>
+                            <h3
+                                class="font-bold text-xl text-slate-800 mb-2 group-hover:text-orange-600 transition-colors">
+                                Acceso desde Web Unifranz</h3>
+                            <p class="text-sm text-slate-500 mb-4 flex-grow font-medium leading-relaxed">Tutorial paso a
+                                paso para ingresar correctamente desde el portal oficial.</p>
+                            <span
+                                class="text-xs font-black text-purple-500 uppercase tracking-wide bg-purple-50 px-3 py-1 rounded-lg self-start">Acceso
+                                Web</span>
                         </div>
                     </div>
                 </div>
@@ -511,8 +963,11 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Video KOHA -->
-                    <a href="https://drive.google.com/file/d/1hTA_DKTFAAF3HLxiL5JZoaRf6B6YMmOa/view?usp=sharing" target="_blank" class="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center group hover:-translate-y-2">
-                        <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
+                    <a href="https://drive.google.com/file/d/1hTA_DKTFAAF3HLxiL5JZoaRf6B6YMmOa/view?usp=sharing"
+                        target="_blank"
+                        class="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center group hover:-translate-y-2">
+                        <div
+                            class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors duration-300">
                             <i data-lucide="monitor" class="w-8 h-8"></i>
                         </div>
                         <h4 class="font-bold text-lg text-slate-800 mb-1">Sistema KOHA</h4>
@@ -520,8 +975,11 @@
                     </a>
 
                     <!-- Video Moodle -->
-                    <a href="https://drive.google.com/file/d/1C5AhuznrClLW2ZYYgm9yyyMsYX1XlBCJ/view?usp=sharing" target="_blank" class="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center group hover:-translate-y-2">
-                        <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                    <a href="https://drive.google.com/file/d/1C5AhuznrClLW2ZYYgm9yyyMsYX1XlBCJ/view?usp=sharing"
+                        target="_blank"
+                        class="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center group hover:-translate-y-2">
+                        <div
+                            class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                             <i data-lucide="school" class="w-8 h-8"></i>
                         </div>
                         <h4 class="font-bold text-lg text-slate-800 mb-1">Aula Virtual</h4>
@@ -529,8 +987,11 @@
                     </a>
 
                     <!-- Video R4L -->
-                    <a href="https://drive.google.com/file/d/1YQh416VTmnkxmoAX4oKGeQeTTt-qSTwo/view?usp=sharing" target="_blank" class="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center group hover:-translate-y-2">
-                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                    <a href="https://drive.google.com/file/d/1YQh416VTmnkxmoAX4oKGeQeTTt-qSTwo/view?usp=sharing"
+                        target="_blank"
+                        class="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center group hover:-translate-y-2">
+                        <div
+                            class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                             <i data-lucide="globe" class="w-8 h-8"></i>
                         </div>
                         <h4 class="font-bold text-lg text-slate-800 mb-1">Research4Life</h4>
@@ -543,21 +1004,31 @@
             <div class="bg-white rounded-[2rem] p-10 border border-slate-200 mt-16 shadow-xl">
                 <div class="flex items-center gap-4 mb-10 justify-center">
                     <span class="bg-rose-600 w-2 h-10 rounded-full"></span>
-                    <h2 class="text-3xl font-black text-slate-800 text-center">Recorridos por las Bibliotecas de Sedes</h2>
+                    <h2 class="text-3xl font-black text-slate-800 text-center">Recorridos por las Bibliotecas de Sedes
+                    </h2>
                     <span class="bg-rose-600 w-2 h-10 rounded-full"></span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    
+
                     <!-- 1. TikTok (Negro/Cian) -->
-                    <a href="https://www.tiktok.com/@unifranz.cbba/video/7365295134759456006" target="_blank" class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-black text-white hover:-translate-y-2 border-2 border-black">
+                    <a href="https://www.tiktok.com/@unifranz.cbba/video/7365295134759456006" target="_blank"
+                        class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-black text-white hover:-translate-y-2 border-2 border-black">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black opacity-100"></div>
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#00f2ea] blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#ff0050] blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                        
+                        <div
+                            class="absolute -top-10 -right-10 w-32 h-32 bg-[#00f2ea] blur-3xl opacity-20 group-hover:opacity-40 transition-opacity">
+                        </div>
+                        <div
+                            class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#ff0050] blur-3xl opacity-20 group-hover:opacity-40 transition-opacity">
+                        </div>
+
                         <div class="p-6 flex flex-col items-center text-center h-full relative z-10">
-                            <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
-                                <svg class="w-8 h-8 fill-current text-white" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                            <div
+                                class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
+                                <svg class="w-8 h-8 fill-current text-white" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                                </svg>
                             </div>
                             <h3 class="font-bold text-lg mb-1 leading-tight">Espacios Biblioteca</h3>
                             <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-6">Campus Central</p>
@@ -568,11 +1039,15 @@
                     </a>
 
                     <!-- 2. YouTube (Rojo Intenso) -->
-                    <a href="https://www.youtube.com/shorts/KKC8WiJ-dCQ" target="_blank" class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-gradient-to-br from-red-600 to-red-800 text-white hover:-translate-y-2 border-2 border-red-600">
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-white blur-3xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
-                        
+                    <a href="https://www.youtube.com/shorts/KKC8WiJ-dCQ" target="_blank"
+                        class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-gradient-to-br from-red-600 to-red-800 text-white hover:-translate-y-2 border-2 border-red-600">
+                        <div
+                            class="absolute -top-10 -right-10 w-32 h-32 bg-white blur-3xl opacity-10 group-hover:opacity-20 transition-opacity">
+                        </div>
+
                         <div class="p-6 flex flex-col items-center text-center h-full relative z-10">
-                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
+                            <div
+                                class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
                                 <i data-lucide="youtube" class="w-8 h-8 text-white fill-current"></i>
                             </div>
                             <h3 class="font-bold text-lg mb-1 leading-tight">Recorrido Corto</h3>
@@ -584,11 +1059,15 @@
                     </a>
 
                     <!-- 3. Instagram 1 (Gradiente Purple-Pink) -->
-                    <a href="https://www.instagram.com/reel/DJU1BHHSn_A/" target="_blank" class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white hover:-translate-y-2 border-2 border-purple-500">
-                        <div class="absolute top-0 right-0 w-full h-full bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
-                        
+                    <a href="https://www.instagram.com/reel/DJU1BHHSn_A/" target="_blank"
+                        class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 text-white hover:-translate-y-2 border-2 border-purple-500">
+                        <div
+                            class="absolute top-0 right-0 w-full h-full bg-black opacity-0 group-hover:opacity-10 transition-opacity">
+                        </div>
+
                         <div class="p-6 flex flex-col items-center text-center h-full relative z-10">
-                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
+                            <div
+                                class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
                                 <i data-lucide="instagram" class="w-8 h-8 text-white"></i>
                             </div>
                             <h3 class="font-bold text-lg mb-1 leading-tight">Espacios Cala Cala</h3>
@@ -600,11 +1079,15 @@
                     </a>
 
                     <!-- 4. Instagram 2 (Gradiente Orange-Pink) -->
-                    <a href="https://www.instagram.com/reel/DATbaNPuEw9/" target="_blank" class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 text-white hover:-translate-y-2 border-2 border-orange-500">
-                        <div class="absolute top-0 right-0 w-full h-full bg-black opacity-0 group-hover:opacity-10 transition-opacity"></div>
-                        
+                    <a href="https://www.instagram.com/reel/DATbaNPuEw9/" target="_blank"
+                        class="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all h-full flex flex-col bg-gradient-to-br from-orange-500 via-red-500 to-pink-600 text-white hover:-translate-y-2 border-2 border-orange-500">
+                        <div
+                            class="absolute top-0 right-0 w-full h-full bg-black opacity-0 group-hover:opacity-10 transition-opacity">
+                        </div>
+
                         <div class="p-6 flex flex-col items-center text-center h-full relative z-10">
-                            <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
+                            <div
+                                class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform backdrop-blur-md border border-white/20">
                                 <i data-lucide="book-open" class="w-8 h-8 text-white"></i>
                             </div>
                             <h3 class="font-bold text-lg mb-1 leading-tight">Libros Medicina</h3>
@@ -622,61 +1105,106 @@
         <!-- ============================================ -->
         <!-- PESTAÑA 4: GUÍA (Structured Layout)          -->
         <!-- ============================================ -->
-        <section id="section-guia" class="hidden-section fade-in-up space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            
+        <section id="section-guia"
+            class="hidden-section fade-in-up space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-orange-600 font-bold text-sm tracking-widest uppercase mb-2 block">Centro de Ayudade acceso a plataforma biblioteca virtual elibro y Research4Life</span>
-                <h2 class="text-4xl font-black text-slate-800 mb-4">Guía del Estudiante, Docentes e Investigadores UNIFRANZ</h2>
-                <p class="text-slate-500 text-lg font-medium">Todo lo que necesitas saber para operar en el sistema de bibliotecas.</p>
+                <span class="text-orange-600 font-bold text-sm tracking-widest uppercase mb-2 block">Centro de Ayudade
+                    acceso a plataforma biblioteca virtual elibro y Research4Life</span>
+                <h2 class="text-4xl font-black text-slate-800 mb-4">Guía del Estudiante, Docentes e Investigadores
+                    UNIFRANZ</h2>
+                <p class="text-slate-500 text-lg font-medium">Todo lo que necesitas saber para operar en el sistema de
+                    bibliotecas.</p>
             </div>
 
             <!-- FILA SUPERIOR: Pasos y Research4Life (2 Columnas) -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
+
                 <!-- Pasos de Acceso (Estilo Visual Impactante) -->
-                <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-orange-100 relative overflow-hidden hover-lift">
+                <div
+                    class="bg-white rounded-3xl shadow-xl p-8 border-2 border-orange-100 relative overflow-hidden hover-lift">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500 opacity-5 rounded-bl-full"></div>
                     <h3 class="text-2xl font-black text-slate-800 mb-8 flex items-center">
-                        <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center mr-3 text-orange-600">
+                        <div
+                            class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center mr-3 text-orange-600">
                             <i data-lucide="log-in" class="w-6 h-6"></i>
                         </div>
                         Pasos de Acceso
                     </h3>
-                    
+
                     <div class="space-y-8 relative">
                         <!-- Linea conectora -->
                         <div class="absolute left-[19px] top-4 bottom-4 w-0.5 bg-slate-200"></div>
-                        
+
                         <!-- Paso 1 -->
                         <div class="relative flex gap-6">
-                            <div class="flex-shrink-0 w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-black text-lg shadow-lg shadow-orange-200 z-10">1</div>
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-black text-lg shadow-lg shadow-orange-200 z-10">
+                                1</div>
                             <div class="pt-1">
                                 <h4 class="font-bold text-slate-800 text-lg mb-1">Ingreso Web</h4>
-                                <p class="text-slate-500 font-medium">Entra a <a href="https://bibliovirtual.unifranz.edu.bo/" target="_blank" class="text-orange-600 font-bold underline decoration-2 hover:text-orange-700">Sistema de Bibliotecas UNIFRANZ Koha</a> desde cualquier navegador.</p>
+                                <p class="text-slate-500 font-medium">Entra a <a
+                                        href="https://bibliovirtual.unifranz.edu.bo/" target="_blank"
+                                        class="text-orange-600 font-bold underline decoration-2 hover:text-orange-700">Sistema
+                                        de Bibliotecas UNIFRANZ Koha</a> desde cualquier navegador.</p>
                             </div>
                         </div>
                         <!-- Paso 2 -->
                         <div class="relative flex gap-6">
-                            <div class="flex-shrink-0 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-black text-lg shadow-lg shadow-orange-200 z-10">2</div>
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-black text-lg shadow-lg shadow-orange-200 z-10">
+                                2</div>
                             <div class="pt-1">
-                                <h4 class="font-bold text-slate-800 text-lg mb-1">Portal Sistema de Bibliotecas Koha Unifranz</h4>
-                                <p class="text-slate-500 font-medium">Ubica la sección inicial de la portada principal haga click en elibro.com.</p>
+                                <h4 class="font-bold text-slate-800 text-lg mb-1">Portal Sistema de Bibliotecas Koha
+                                    Unifranz</h4>
+                                <p class="text-slate-500 font-medium">Ubica la sección inicial de la portada principal
+                                    haga click en elibro.com.</p>
                             </div>
                         </div>
                         <!-- Paso 3 -->
                         <div class="relative flex gap-6">
-                            <div class="flex-shrink-0 w-10 h-10 bg-orange-400 text-white rounded-full flex items-center justify-center font-black text-lg shadow-lg shadow-orange-200 z-10">3</div>
+                            <div
+                                class="flex-shrink-0 w-10 h-10 bg-orange-400 text-white rounded-full flex items-center justify-center font-black text-lg shadow-lg shadow-orange-200 z-10">
+                                3</div>
                             <div class="pt-1">
                                 <h4 class="font-bold text-slate-800 text-lg mb-2">Credenciales de acceso a elibro</h4>
-                                <p class="text-slate-500 font-medium mb-4">Elige la plataforma <strong class="text-slate-800">eLibro</strong> e ingresa con tu usuario institucional.</p>
-                                
+                                <p class="text-slate-500 font-medium mb-4">Elige la plataforma <strong
+                                        class="text-slate-800">eLibro</strong> e ingresa con tu usuario institucional.
+                                </p>
+
                                 <!-- Ejemplo Credenciales -->
-                                <div class="bg-slate-800 text-slate-300 rounded-xl p-4 text-sm font-mono relative overflow-hidden border border-slate-700 shadow-inner">
-                                    <div class="absolute top-0 right-0 w-16 h-16 bg-white opacity-5 rounded-bl-full"></div>
-                                    <span class="block font-bold text-orange-400 mb-2 uppercase text-xs tracking-wider">Ejemplo de Acceso Sede Cochabamba:</span>
-                                    <div class="space-y-1">
-                                        <p><span class="text-slate-500">Usuario:</span> <span class="text-white font-bold">Cbba.juanperez@unifranz.edu.bo</span> <span class="text-orange-400 text-xs block sm:inline">(Correo Institucional unifranz)</span></p>
-                                        <p><span class="text-slate-500">Contraseña:</span> <span class="text-white font-bold">4072078CBB</span> <span class="text-orange-400 text-xs">(Nº Carnet+CBB)</span></p>
+                                <div class="bg-slate-900 text-slate-300 rounded-2xl p-6 text-sm font-mono relative overflow-hidden border border-slate-800 shadow-2xl">
+                                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500 opacity-5 rounded-bl-full"></div>
+                                    
+                                    <div class="mb-6">
+                                        <span class="block font-black text-orange-400 mb-3 uppercase text-[10px] tracking-widest">Ejemplo de Acceso (Cochabamba):</span>
+                                        <div class="space-y-2 bg-black/30 p-4 rounded-xl border border-white/5">
+                                            <p><span class="text-slate-500">Usuario:</span> <span class="text-white font-bold">Cbba.juanperez@unifranz.edu.bo</span></p>
+                                            <p><span class="text-slate-500">Contraseña:</span> <span class="text-white font-bold">4072078CBB</span> <span class="text-orange-500/80 text-[10px] ml-2">(Nº Carnet + CBB)</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-t border-white/5 pt-6">
+                                        <span class="block font-black text-slate-400 mb-4 uppercase text-[10px] tracking-widest">Variaciones por Sede (Contraseña):</span>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div class="flex items-center justify-between bg-white/5 px-4 py-3 rounded-xl border border-white/5">
+                                                <span class="text-slate-400 text-xs">La Paz</span>
+                                                <span class="text-white font-bold bg-blue-500/20 px-2 py-1 rounded text-xs tracking-wider">4072078LPZ</span>
+                                            </div>
+                                            <div class="flex items-center justify-between bg-white/5 px-4 py-3 rounded-xl border border-white/5">
+                                                <span class="text-slate-400 text-xs">El Alto</span>
+                                                <span class="text-white font-bold bg-emerald-500/20 px-2 py-1 rounded text-xs tracking-wider">4072078EAT</span>
+                                            </div>
+                                            <div class="flex items-center justify-between bg-white/5 px-4 py-3 rounded-xl border border-white/5">
+                                                <span class="text-slate-400 text-xs">Santa Cruz</span>
+                                                <span class="text-white font-bold bg-orange-500/20 px-2 py-1 rounded text-xs tracking-wider">4072078SCZ</span>
+                                            </div>
+                                            <div class="flex items-center justify-between bg-white/5 px-4 py-3 rounded-xl border border-white/5">
+                                                <span class="text-slate-400 text-xs">Cochabamba</span>
+                                                <span class="text-white font-bold bg-slate-500/20 px-2 py-1 rounded text-xs tracking-wider">4072078CBB</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-[10px] text-slate-500 mt-4 italic font-medium">* El usuario siempre es el correo institucional completo.</p>
                                     </div>
                                 </div>
                             </div>
@@ -684,119 +1212,255 @@
                     </div>
                 </div>
 
-                <!-- Research4Life Programs (Diseño de Tiles) -->
-                <div class="bg-gradient-to-br from-emerald-900 to-teal-900 rounded-3xl shadow-xl p-8 text-white relative overflow-hidden hover-lift group">
-                    <!-- Background Pattern -->
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                <!-- Research4Life: Official Bento Hub -->
+                <div class="bg-slate-950 rounded-[3.5rem] p-4 md:p-12 text-white relative overflow-hidden border border-white/5 shadow-2xl">
+                    <!-- Subtle Glows -->
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]"></div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px]"></div>
                     
-                    <a href="https://portal.research4life.org/" target="_blank" class="text-2xl font-black mb-6 flex items-center relative z-10 hover:text-emerald-300 transition-colors">
-                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center mr-3 backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform">
-                            <i data-lucide="globe" class="w-6 h-6 text-emerald-400"></i>
+                    <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <!-- Header: Official Logo Link -->
+                        <div class="md:col-span-3 flex flex-col items-center justify-center py-10 group">
+                            <a href="https://portal.research4life.org/" target="_blank" class="block transform group-hover:scale-105 transition-all duration-700 drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                                <img src="https://www.research4life.org/wp-content/uploads/2020/03/Logo-R4L-3.png" alt="Research4Life Portal" class="w-full max-w-xl h-auto object-contain">
+                            </a>
+                            <div class="mt-6 flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.4em] animate-pulse">
+                                <i data-lucide="mouse-pointer-2" class="w-3 h-3"></i>
+                                Click para acceder al portal oficial
+                            </div>
                         </div>
-                        Research4Life Programs
-                        <i data-lucide="external-link" class="w-5 h-5 ml-2 opacity-50 group-hover:opacity-100 transition-opacity"></i>
-                    </a>
-                    <p class="text-emerald-100 text-sm mb-8 font-medium relative z-10 max-w-sm">Acceso premium a recursos académicos y profesionales internacionales revisados por pares.</p>
-                    
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 relative z-10">
-                        <!-- Tile 1 -->
-                        <div class="bg-white/10 hover:bg-white/20 transition-colors p-4 rounded-2xl text-center border border-white/5 backdrop-blur-sm group cursor-default">
-                            <div class="text-2xl font-black text-emerald-400 mb-1 group-hover:scale-110 transition-transform">H</div>
-                            <span class="block text-white font-bold text-sm">Hinari</span>
-                            <span class="text-[10px] text-emerald-300 uppercase font-bold tracking-wider">Salud</span>
+
+                        <!-- Programs Carousel Container -->
+                        <div class="md:col-span-3 relative px-4 pb-12 overflow-hidden">
+                            <!-- Progress Bar (6s Timer) - Moved to Bottom -->
+                            <div class="absolute bottom-20 left-1/2 -translate-x-1/2 w-64 h-1 bg-white/10 rounded-full overflow-hidden z-20">
+                                <div id="carousel-progress" class="h-full bg-emerald-500 w-0 transition-none"></div>
+                            </div>
+
+                            <!-- Carousel Track -->
+                            <div id="programs-carousel" class="relative min-h-[300px] flex items-center justify-center">
+                                
+                                <!-- Slide 1: Hinari -->
+                                <div class="carousel-slide absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 opacity-0 pointer-events-none transform translate-x-12" data-index="0">
+                                    <div class="w-48 h-32 bg-white rounded-xl p-6 mb-8 shadow-2xl transform hover:rotate-2 transition-transform flex items-center justify-center">
+                                        <img src="https://www.research4life.org/wp-content/uploads/2020/04/Logo-Hinari.png" alt="Hinari" class="w-full h-full object-contain">
+                                    </div>
+                                    <span class="px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black uppercase tracking-[0.3em] mb-4">Salud y Medicina clínica especializada</span>
+                                    <p class="text-slate-400 text-lg font-medium max-w-2xl">Ideal para carreras como Medicina, Enfermería, Bioquímica, Odontología, Psicología, Nutrición y ciencias de la salud integral.</p>
+                                </div>
+
+                                <!-- Slide 2: AGORA -->
+                                <div class="carousel-slide absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 opacity-0 pointer-events-none transform translate-x-12" data-index="1">
+                                    <div class="w-48 h-32 bg-white rounded-xl p-6 mb-8 shadow-2xl transform hover:-rotate-2 transition-transform flex items-center justify-center">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEk4XffP0vmOmio3zJgkV2u0anujc11FwgNw&s" alt="AGORA" class="w-full h-full object-contain">
+                                    </div>
+                                    <span class="px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-400 text-xs font-black uppercase tracking-[0.3em] mb-4">Agricultura, alimentos y ciencias biológicas</span>
+                                    <p class="text-slate-400 text-lg font-medium max-w-2xl">Útil para Agronomía, Veterinaria, Gastronomía, Medio Ambiente, producción alimentaria y desarrollo rural sostenible.</p>
+                                </div>
+
+                                <!-- Slide 3: OARE -->
+                                <div class="carousel-slide absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 opacity-0 pointer-events-none transform translate-x-12" data-index="2">
+                                    <div class="w-48 h-32 bg-white rounded-xl p-6 mb-8 shadow-2xl transform hover:rotate-2 transition-transform flex items-center justify-center">
+                                        <img src="https://www.research4life.org/wp-content/uploads/2020/06/Logo-OARE.png" alt="OARE" class="w-full h-full object-contain">
+                                    </div>
+                                    <span class="px-4 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-black uppercase tracking-[0.3em] mb-4">Medio ambiente, ecología y sostenibilidad global</span>
+                                    <p class="text-slate-400 text-lg font-medium max-w-2xl">Recomendado para Ingeniería Ambiental, Arquitectura, Urbanismo, Energías renovables y proyectos de desarrollo sostenible global.</p>
+                                </div>
+
+                                <!-- Slide 4: ARDI -->
+                                <div class="carousel-slide absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 opacity-0 pointer-events-none transform translate-x-12" data-index="3">
+                                    <div class="w-48 h-32 bg-white rounded-xl p-6 mb-8 shadow-2xl transform hover:-rotate-2 transition-transform flex items-center justify-center">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGC-wJquKirVbSKBUzfQ-ty0ZLa3N7V3zjXQ&s" alt="ARDI" class="w-full h-full object-contain">
+                                    </div>
+                                    <span class="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-black uppercase tracking-[0.3em] mb-4">Innovación, investigación científica y tecnología aplicada</span>
+                                    <p class="text-slate-400 text-lg font-medium max-w-2xl">Orientado a Ingeniería, Tecnología, Diseño, Publicidad, Marketing, Comunicación, Periodismo, Economía y Administración de Empresas modernas.</p>
+                                </div>
+
+                                <!-- Slide 5: GOALI -->
+                                <div class="carousel-slide absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-1000 opacity-0 pointer-events-none transform translate-x-12" data-index="4">
+                                    <div class="w-48 h-32 bg-white rounded-xl p-6 mb-8 shadow-2xl transform hover:rotate-2 transition-transform flex items-center justify-center">
+                                        <img src="https://www.research4life.org/wp-content/uploads/2020/03/Logo-GOALI.png" alt="GOALI" class="w-full h-full object-contain">
+                                    </div>
+                                    <span class="px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-black uppercase tracking-[0.3em] mb-4">Derecho, legislación y ciencias jurídicas internacionales</span>
+                                    <p class="text-slate-400 text-lg font-medium max-w-2xl">Especializado en Derecho, Relaciones Internacionales, Administración, Economía y normativa laboral internacional y empresarial.</p>
+                                </div>
+
+                            </div>
+
+                            <!-- Carousel Navigation Dots -->
+                            <div class="flex justify-center gap-3 mt-8">
+                                <button onclick="goToSlide(0)" class="carousel-dot w-10 h-1.5 rounded-full bg-white/10 transition-all hover:bg-white/30"></button>
+                                <button onclick="goToSlide(1)" class="carousel-dot w-2 h-1.5 rounded-full bg-white/10 transition-all hover:bg-white/30"></button>
+                                <button onclick="goToSlide(2)" class="carousel-dot w-2 h-1.5 rounded-full bg-white/10 transition-all hover:bg-white/30"></button>
+                                <button onclick="goToSlide(3)" class="carousel-dot w-2 h-1.5 rounded-full bg-white/10 transition-all hover:bg-white/30"></button>
+                                <button onclick="goToSlide(4)" class="carousel-dot w-2 h-1.5 rounded-full bg-white/10 transition-all hover:bg-white/30"></button>
+                            </div>
                         </div>
-                        <!-- Tile 2 -->
-                        <div class="bg-white/10 hover:bg-white/20 transition-colors p-4 rounded-2xl text-center border border-white/5 backdrop-blur-sm group cursor-default">
-                            <div class="text-2xl font-black text-emerald-400 mb-1 group-hover:scale-110 transition-transform">A</div>
-                            <span class="block text-white font-bold text-sm">AGORA</span>
-                            <span class="text-[10px] text-emerald-300 uppercase font-bold tracking-wider">Agro</span>
-                        </div>
-                        <!-- Tile 3 -->
-                        <div class="bg-white/10 hover:bg-white/20 transition-colors p-4 rounded-2xl text-center border border-white/5 backdrop-blur-sm group cursor-default">
-                            <div class="text-2xl font-black text-emerald-400 mb-1 group-hover:scale-110 transition-transform">O</div>
-                            <span class="block text-white font-bold text-sm">OARE</span>
-                            <span class="text-[10px] text-emerald-300 uppercase font-bold tracking-wider">Ambiente</span>
-                        </div>
-                        <!-- Tile 4 -->
-                        <div class="bg-white/10 hover:bg-white/20 transition-colors p-4 rounded-2xl text-center border border-white/5 backdrop-blur-sm group cursor-default">
-                            <div class="text-2xl font-black text-emerald-400 mb-1 group-hover:scale-110 transition-transform">A</div>
-                            <span class="block text-white font-bold text-sm">ARDI</span>
-                            <span class="text-[10px] text-emerald-300 uppercase font-bold tracking-wider">Innovación</span>
-                        </div>
-                        <!-- Tile 5 -->
-                        <div class="bg-white/10 hover:bg-white/20 transition-colors p-4 rounded-2xl text-center border border-white/5 backdrop-blur-sm group cursor-default col-span-2 sm:col-span-1">
-                            <div class="text-2xl font-black text-emerald-400 mb-1 group-hover:scale-110 transition-transform">G</div>
-                            <span class="block text-white font-bold text-sm">GOALI</span>
-                            <span class="text-[10px] text-emerald-300 uppercase font-bold tracking-wider">Justicia</span>
-                        </div>
+
+                        <script>
+                            let currentSlide = 0;
+                            const slides = document.querySelectorAll('.carousel-slide');
+                            const dots = document.querySelectorAll('.carousel-dot');
+                            const progress = document.getElementById('carousel-progress');
+                            const SLIDE_DURATION = 6000; // 6 seconds
+                            let slideInterval;
+
+                            function showSlide(index) {
+                                slides.forEach((slide, i) => {
+                                    slide.classList.toggle('opacity-100', i === index);
+                                    slide.classList.toggle('opacity-0', i !== index);
+                                    slide.classList.toggle('pointer-events-auto', i === index);
+                                    slide.classList.toggle('pointer-events-none', i !== index);
+                                    slide.classList.toggle('translate-x-0', i === index);
+                                    slide.classList.toggle('translate-x-12', i !== index);
+                                });
+
+                                dots.forEach((dot, i) => {
+                                    dot.classList.toggle('bg-emerald-500', i === index);
+                                    dot.classList.toggle('w-10', i === index);
+                                    dot.classList.toggle('w-2', i !== index);
+                                    dot.classList.toggle('bg-white/10', i !== index);
+                                });
+
+                                currentSlide = index;
+                                resetProgressBar();
+                            }
+
+                            function resetProgressBar() {
+                                progress.style.transition = 'none';
+                                progress.style.width = '0%';
+                                setTimeout(() => {
+                                    progress.style.transition = `width ${SLIDE_DURATION}ms linear`;
+                                    progress.style.width = '100%';
+                                }, 10);
+                            }
+
+                            function nextSlide() {
+                                showSlide((currentSlide + 1) % slides.length);
+                            }
+
+                            function goToSlide(index) {
+                                clearInterval(slideInterval);
+                                showSlide(index);
+                                startAutoSlide();
+                            }
+
+                            function startAutoSlide() {
+                                slideInterval = setInterval(nextSlide, SLIDE_DURATION);
+                            }
+
+                            // Initialize
+                            document.addEventListener('DOMContentLoaded', () => {
+                                showSlide(0);
+                                startAutoSlide();
+                            });
+                        </script>
+
                     </div>
                 </div>
             </div>
 
             <!-- FILA INFERIOR: Logística (3 Columnas Equidistribuidas - DISEÑO CARD GRADIENTE) -->
             <div>
-                <h3 class="text-center text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Información Operativa</h3>
+                <h3 class="text-center text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Información
+                    Operativa</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    
+
                     <!-- Columna 1: Requisitos (Azul Eléctrico) -->
-                    <div class="bg-gradient-to-br from-blue-600 to-violet-700 rounded-3xl p-8 shadow-xl hover-lift text-white relative overflow-hidden group">
-                        <div class="absolute -right-6 -top-6 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    <div
+                        class="bg-gradient-to-br from-blue-600 to-violet-700 rounded-3xl p-8 shadow-xl hover-lift text-white relative overflow-hidden group">
+                        <div
+                            class="absolute -right-6 -top-6 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700">
+                        </div>
                         <div class="flex justify-center mb-6">
-                            <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 shadow-inner">
+                            <div
+                                class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 shadow-inner">
                                 <i data-lucide="clipboard-list" class="w-7 h-7"></i>
                             </div>
                         </div>
                         <h4 class="font-bold text-xl text-center mb-4">Requisitos</h4>
                         <div class="text-center mb-6">
-                            <span class="bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md animate-pulse">⚠ Reserva Previa</span>
+                            <span
+                                class="bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md animate-pulse">⚠
+                                Reserva Previa</span>
                         </div>
                         <div class="space-y-4 text-sm font-medium text-blue-100">
                             <div class="bg-white/10 p-3 rounded-xl border border-white/10">
-                                <span class="block font-bold text-white text-xs uppercase opacity-70 mb-1">A Domicilio</span>
+                                <span class="block font-bold text-white text-xs uppercase opacity-70 mb-1">A
+                                    Domicilio</span>
                                 <span>C.I. / Pasaporte vigente</span>
                             </div>
                             <div class="bg-white/10 p-3 rounded-xl border border-white/10">
-                                <span class="block font-bold text-white text-xs uppercase opacity-70 mb-1">En Sala</span>
+                                <span class="block font-bold text-white text-xs uppercase opacity-70 mb-1">En
+                                    Sala</span>
                                 <span>Carnet universitario / C.I.</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Columna 2: Horarios (Dark Mode Moderno) -->
-                    <div class="bg-gradient-to-br from-slate-800 to-black rounded-3xl p-8 shadow-xl hover-lift text-white relative overflow-hidden group">
+                    <div class="bg-gradient-to-br from-slate-800 to-black rounded-3xl p-8 shadow-xl hover-lift text-white relative overflow-hidden group min-h-[400px] flex flex-col">
                         <div class="absolute -right-6 -top-6 w-32 h-32 bg-orange-500 opacity-10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                         <div class="flex justify-center mb-6">
                             <div class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/10 shadow-inner">
                                 <i data-lucide="clock" class="w-7 h-7 text-orange-400"></i>
                             </div>
                         </div>
-                        <h4 class="font-bold text-xl text-center mb-1">Horarios</h4>
-                        <p class="text-xs text-orange-400 text-center uppercase font-bold tracking-widest mb-6">Sede Cochabamba</p>
+                        <h4 class="font-bold text-xl text-center mb-1">Horarios de Atención</h4>
                         
-                        <div class="space-y-3 text-sm font-medium text-slate-300">
-                            <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
-                                <span>Lun - Vie</span>
-                                <span class="font-bold text-white bg-white/10 px-2 py-1 rounded">08:00 - 20:00</span>
+                        <!-- Sede Selector -->
+                        <div class="mb-6 relative z-10 mt-2">
+                            <select id="sede-selector" onchange="updateSedeSchedule(this.value)" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-xs font-bold text-orange-400 uppercase tracking-widest focus:ring-2 focus:ring-orange-500 outline-none appearance-none cursor-pointer">
+                                <option value="cbba">Sede Cochabamba</option>
+                                <option value="lpz">Sede La Paz</option>
+                                <option value="alto">Sede El Alto</option>
+                                <option value="scz">Sede Santa Cruz</option>
+                            </select>
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-orange-400"></i>
                             </div>
-                            <div class="flex justify-between items-center bg-white/5 p-3 rounded-xl border border-white/5">
+                        </div>
+
+                        <div class="space-y-4 text-sm font-medium text-slate-300 mt-auto">
+                            <div class="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 group/row hover:bg-white/10 transition-colors">
+                                <span>Lun - Vie</span>
+                                <span id="schedule-lun-vie" class="font-black text-white bg-white/10 px-3 py-1.5 rounded-lg text-xs">08:00 - 20:00</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-white/5 p-4 rounded-xl border border-white/5 group/row hover:bg-white/10 transition-colors">
                                 <span>Sábados</span>
-                                <span class="font-bold text-white bg-white/10 px-2 py-1 rounded">08:00 - 12:00</span>
+                                <span id="schedule-sabado" class="font-black text-white bg-white/10 px-3 py-1.5 rounded-lg text-xs">08:00 - 12:00</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Columna 3: Atención Virtual (Cyan Vibrante) -->
-                    <div class="bg-gradient-to-br from-sky-400 to-blue-600 rounded-3xl p-8 shadow-xl hover-lift text-white relative overflow-hidden group">
+                    <div class="bg-gradient-to-br from-sky-400 to-blue-600 rounded-3xl p-8 shadow-xl hover-lift text-white relative overflow-hidden group min-h-[400px] flex flex-col">
                         <div class="absolute -right-6 -top-6 w-32 h-32 bg-white opacity-20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                         <div class="flex justify-center mb-6">
                             <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 shadow-inner group-hover:rotate-12 transition-transform">
                                 <i data-lucide="message-circle" class="w-7 h-7"></i>
                             </div>
                         </div>
-                        <h4 class="font-bold text-xl text-center mb-4">Atención Virtual</h4>
-                        <p class="text-sm text-sky-100 text-center mb-8 font-medium leading-relaxed">Únete a nuestro canal oficial de Telegram para recibir soporte inmediato.</p>
+                        <h4 class="font-bold text-xl text-center mb-1">Atención Virtual</h4>
                         
-                        <a href="https://t.me/+UMBSce1zVjhZGtEz" target="_blank" class="flex items-center justify-center bg-white text-blue-600 text-sm font-black px-6 py-3 rounded-xl hover:bg-sky-50 transition-colors shadow-lg w-full transform hover:scale-105 active:scale-95 duration-200">
+                        <!-- Sede Selector for Telegram -->
+                        <div class="mb-6 relative z-10 mt-2">
+                            <select id="telegram-sede-selector" onchange="updateTelegramLink(this.value)" class="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-xs font-bold text-white uppercase tracking-widest focus:ring-2 focus:ring-white/50 outline-none appearance-none cursor-pointer">
+                                <option value="cbba" class="text-slate-800">Sede Cochabamba</option>
+                                <option value="lpz" class="text-slate-800">Sede La Paz</option>
+                                <option value="alto" class="text-slate-800">Sede El Alto</option>
+                                <option value="scz" class="text-slate-800">Sede Santa Cruz</option>
+                            </select>
+                            <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-white"></i>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-sky-100 text-center mb-8 font-medium leading-relaxed mt-auto">Únete a nuestro canal oficial de Telegram para recibir soporte inmediato.</p>
+
+                        <a id="telegram-link-btn" href="https://t.me/+UMBSce1zVjhZGtEz" target="_blank"
+                            class="flex items-center justify-center bg-white text-blue-600 text-sm font-black px-6 py-4 rounded-2xl hover:bg-sky-50 transition-all shadow-lg w-full transform hover:scale-105 active:scale-95 duration-200">
                             UNIRME AHORA <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
                         </a>
                     </div>
@@ -810,15 +1474,18 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 mt-auto py-8">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-500 text-sm">© 2025 Recurso Guía Didáctico para Docentes y Estudiantes de <strong class="text-orange-600">UNIFRANZ</strong>.</p>
-            <p class="text-xs text-slate-400 mt-2">Todos los derechos reservados - Guía de Usuario eLibro 2025 - Biblioteca Unifranz.</p>
+            <p class="text-slate-500 text-sm">© 2025 Recurso Guía Didáctico para Docentes y Estudiantes de <strong
+                    class="text-orange-600">UNIFRANZ</strong>.</p>
+            <p class="text-xs text-slate-400 mt-2">Todos los derechos reservados - Guía de Usuario eLibro 2025 -
+                Biblioteca Unifranz.</p>
         </div>
     </footer>
 
     <!-- Chatbot Widget -->
     <div id="chat-widget" class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
         <!-- Chat Box -->
-        <div id="chat-box" class="hidden bg-white w-80 sm:w-96 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 mb-4 flex-col h-[500px]">
+        <div id="chat-box"
+            class="hidden bg-white w-80 sm:w-96 rounded-2xl shadow-2xl overflow-hidden border border-slate-200 mb-4 flex-col h-[500px]">
             <!-- Chat Header -->
             <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 flex items-center justify-between text-white">
                 <div class="flex items-center gap-2">
@@ -834,7 +1501,7 @@
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-            
+
             <!-- Chat Messages -->
             <div id="chat-messages" class="flex-grow p-4 overflow-y-auto bg-slate-50 flex flex-col gap-2">
                 <!-- Mensaje inicial -->
@@ -849,18 +1516,22 @@
                     ¿Qué necesitas saber?
                 </div>
             </div>
-            
+
             <!-- Chat Input -->
             <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
-                <input type="text" id="chat-input" placeholder="Escribe tu pregunta..." class="flex-grow bg-slate-100 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-orange-200 outline-none" onkeypress="handleEnter(event)">
-                <button onclick="sendMessage()" class="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-xl transition-colors">
+                <input type="text" id="chat-input" placeholder="Escribe tu pregunta..."
+                    class="flex-grow bg-slate-100 border-none rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-orange-200 outline-none"
+                    onkeypress="handleEnter(event)">
+                <button onclick="sendMessage()"
+                    class="bg-orange-500 hover:bg-orange-600 text-white p-2 rounded-xl transition-colors">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
 
         <!-- Floating Button -->
-        <button onclick="toggleChat()" id="chat-toggle-btn" class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all flex items-center justify-center group">
+        <button onclick="toggleChat()" id="chat-toggle-btn"
+            class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all flex items-center justify-center group">
             <i data-lucide="message-circle" class="w-8 h-8 group-hover:rotate-12 transition-transform"></i>
         </button>
     </div>
@@ -872,8 +1543,8 @@
 
         function switchTab(tabId) {
             // IDs de las secciones
-            const sections = ['inicio', 'colecciones', 'tutoriales', 'guia'];
-            
+            const sections = ['inicio', 'investigacion', 'tutoriales', 'guia'];
+
             // 1. Ocultar TODAS las secciones
             sections.forEach(id => {
                 const el = document.getElementById('section-' + id);
@@ -888,66 +1559,66 @@
             if (selected) {
                 selected.classList.remove('hidden-section');
                 // Trigger reflow para reiniciar animación css
-                void selected.offsetWidth; 
+                void selected.offsetWidth;
                 selected.classList.add('fade-in-up');
             }
 
             // 3. Gestionar estado activo de botones
             sections.forEach(id => {
-               // Desktop
-               const btnD = document.getElementById('btn-desktop-' + id);
-               if(btnD) {
-                   if(id === tabId) {
-                       btnD.classList.add('nav-active-desktop');
-                   } else {
-                       btnD.classList.remove('nav-active-desktop');
-                   }
-               }
-               
-               // Mobile
-               const btnM = document.getElementById('btn-mobile-' + id);
-               if(btnM) {
-                   if(id === tabId) {
-                       btnM.classList.add('nav-active-mobile');
-                       btnM.classList.remove('text-orange-100'); // Quitamos color inactivo
-                   } else {
-                       btnM.classList.remove('nav-active-mobile');
-                       btnM.classList.add('text-orange-100'); // Ponemos color inactivo
-                   }
-               }
+                // Desktop
+                const btnD = document.getElementById('btn-desktop-' + id);
+                if (btnD) {
+                    if (id === tabId) {
+                        btnD.classList.add('nav-active-desktop');
+                    } else {
+                        btnD.classList.remove('nav-active-desktop');
+                    }
+                }
+
+                // Mobile
+                const btnM = document.getElementById('btn-mobile-' + id);
+                if (btnM) {
+                    if (id === tabId) {
+                        btnM.classList.add('nav-active-mobile');
+                        btnM.classList.remove('text-orange-100'); // Quitamos color inactivo
+                    } else {
+                        btnM.classList.remove('nav-active-mobile');
+                        btnM.classList.add('text-orange-100'); // Ponemos color inactivo
+                    }
+                }
             });
-            
+
             // Scroll suave al inicio
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // --- LÓGICA DEL CHATBOT ---
-        
+
         // Base de conocimiento simple
         const knowledgeBase = [
-            { 
-                keywords: ['hola', 'buenos dias', 'buenas'], 
-                response: "¡Hola! ¿En qué puedo ayudarte hoy sobre la biblioteca?" 
+            {
+                keywords: ['hola', 'buenos dias', 'buenas'],
+                response: "¡Hola! ¿En qué puedo ayudarte hoy sobre la biblioteca?"
             },
-            { 
-                keywords: ['horario', 'hora', 'abierto', 'atienden'], 
-                response: "🕒 <b>Horarios Sede Cochabamba:</b><br>• Lun-Vie: 08:00 - 20:00<br>• Sábados: 08:00 - 12:00" 
+            {
+                keywords: ['horario', 'hora', 'abierto', 'atienden'],
+                response: "🕒 <b>Horarios Sede Cochabamba:</b><br>• Lun-Vie: 08:00 - 20:00<br>• Sábados: 08:00 - 12:00"
             },
-            { 
-                keywords: ['entrar', 'acceso', 'ingresar', 'login', 'usuario', 'contraseña', 'clave', 'cuenta'], 
-                response: "🔑 <b>Credenciales de Acceso:</b><br>1. Entra a <a href='https://bibliovirtual.unifranz.edu.bo/' target='_blank' class='text-orange-600 underline'>bibliovirtual.unifranz.edu.bo</a><br>2. Usuario: Tu correo institucional (ej: Cbba.juan@unifranz.edu.bo)<br>3. Contraseña: Nº Carnet + CBB (ej: 123456CBB)" 
+            {
+                keywords: ['entrar', 'acceso', 'ingresar', 'login', 'usuario', 'contraseña', 'clave', 'cuenta'],
+                response: "🔑 <b>Credenciales de Acceso:</b><br>1. Entra a <a href='https://bibliovirtual.unifranz.edu.bo/' target='_blank' class='text-orange-600 underline'>bibliovirtual.unifranz.edu.bo</a><br>2. Usuario: Tu correo institucional (ej: Cbba.juan@unifranz.edu.bo)<br>3. Contraseña: Nº Carnet + CBB (ej: 123456CBB)"
             },
-            { 
-                keywords: ['requisito', 'prestamo', 'prestar', 'sacar libro', 'llevar libro'], 
-                response: "📚 <b>Requisitos de Préstamo:</b><br>⚠ Requiere reserva previa en sistema.<br>• <b>Domicilio:</b> Dejar C.I. o Pasaporte vigente.<br>• <b>Sala:</b> Credencial o C.I." 
+            {
+                keywords: ['requisito', 'prestamo', 'prestar', 'sacar libro', 'llevar libro'],
+                response: "📚 <b>Requisitos de Préstamo:</b><br>⚠ Requiere reserva previa en sistema.<br>• <b>Domicilio:</b> Dejar C.I. o Pasaporte vigente.<br>• <b>Sala:</b> Credencial o C.I."
             },
-            { 
-                keywords: ['research4life', 'hinari', 'agora', 'oare', 'ardi', 'goali'], 
-                response: "🌍 <b>Research4Life</b> ofrece acceso a 5 programas:<br>• Hinari (Salud)<br>• AGORA (Agricultura)<br>• OARE (Ambiente)<br>• ARDI (Innovación)<br>• GOALI (Justicia)<br><a href='https://portal.research4life.org/' target='_blank' class='text-orange-600 underline'>Ir al portal</a>" 
+            {
+                keywords: ['research4life', 'hinari', 'agora', 'oare', 'ardi', 'goali'],
+                response: "🌍 <b>Research4Life</b> ofrece acceso a 5 programas:<br>• Hinari (Salud)<br>• AGORA (Agricultura)<br>• OARE (Ambiente)<br>• ARDI (Innovación)<br>• GOALI (Justicia)<br><a href='https://portal.research4life.org/' target='_blank' class='text-orange-600 underline'>Ir al portal</a>"
             },
-            { 
-                keywords: ['contacto', 'ayuda', 'telegram', 'soporte'], 
-                response: "💬 Puedes unirte a nuestro canal oficial de Telegram para soporte inmediato: <a href='https://t.me/+UMBSce1zVjhZGtEz' target='_blank' class='text-orange-600 underline font-bold'>Clic aquí para unirte</a>" 
+            {
+                keywords: ['contacto', 'ayuda', 'telegram', 'soporte'],
+                response: "💬 Puedes unirte a nuestro canal oficial de Telegram para soporte inmediato: <a href='https://t.me/+UMBSce1zVjhZGtEz' target='_blank' class='text-orange-600 underline font-bold'>Clic aquí para unirte</a>"
             },
             {
                 keywords: ['direccion', 'ubicacion', 'donde queda'],
@@ -958,7 +1629,7 @@
         function toggleChat() {
             const chatBox = document.getElementById('chat-box');
             const toggleBtn = document.getElementById('chat-toggle-btn');
-            
+
             if (chatBox.classList.contains('hidden')) {
                 chatBox.classList.remove('hidden');
                 chatBox.classList.add('flex');
@@ -977,7 +1648,7 @@
         function sendMessage() {
             const input = document.getElementById('chat-input');
             const messageText = input.value.trim();
-            
+
             if (messageText === "") return;
 
             // 1. Añadir mensaje del usuario
@@ -1021,17 +1692,63 @@
 
         function getBotResponse(input) {
             const normalizedInput = input.toLowerCase();
-            
+
             // Buscar coincidencia en base de conocimientos
             for (const item of knowledgeBase) {
                 if (item.keywords.some(keyword => normalizedInput.includes(keyword))) {
                     return item.response;
                 }
             }
-            
+
             // Respuesta por defecto
             return "🤔 No estoy seguro de entender tu pregunta. Intenta preguntar sobre:<br>• Horarios<br>• Cómo ingresar<br>• Requisitos<br>• Research4Life<br>• Contacto";
         }
+
+        function updateSedeSchedule(sede) {
+            const schedules = {
+                'cbba': { lv: '08:00 - 20:00', s: '08:00 - 12:00' },
+                'lpz': { lv: '08:05 - 20:00', s: '08:05 - 12:30' },
+                'alto': { lv: '08:30 - 19:30', s: '09:00 - 13:00' },
+                'scz': { lv: '08:30 - 21:00', s: '08:30 - 12:00' }
+            };
+
+            const data = schedules[sede];
+            const lvEl = document.getElementById('schedule-lun-vie');
+            const sEl = document.getElementById('schedule-sabado');
+
+            if (lvEl && sEl && data) {
+                // Animación de cambio
+                lvEl.classList.add('scale-95', 'opacity-50');
+                sEl.classList.add('scale-95', 'opacity-50');
+
+                setTimeout(() => {
+                    lvEl.textContent = data.lv;
+                    sEl.textContent = data.s;
+                    lvEl.classList.remove('scale-95', 'opacity-50');
+                    sEl.classList.remove('scale-95', 'opacity-50');
+                }, 150);
+            }
+        }
+
+        function updateTelegramLink(sede) {
+            const links = {
+                'cbba': 'https://t.me/+UMBSce1zVjhZGtEz',
+                'lpz': 'https://t.me/+xPTracQNZ3kyMjdh',
+                'alto': 'https://t.me/+PIKzcwSQ_sFmM2Vh',
+                'scz': 'https://t.me/+Omc_c_t5aZxhYTMx'
+            };
+
+            const btn = document.getElementById('telegram-link-btn');
+            if (btn && links[sede]) {
+                btn.classList.add('scale-95', 'opacity-50');
+                
+                setTimeout(() => {
+                    btn.href = links[sede];
+                    btn.classList.remove('scale-95', 'opacity-50');
+                }, 150);
+            }
+        }
     </script>
 </body>
+
 </html>

@@ -1594,35 +1594,78 @@
 
         // --- LÓGICA DEL CHATBOT ---
 
-        // Base de conocimiento simple
+        // Base de conocimiento ampliada con toda la información del Dashboard
         const knowledgeBase = [
             {
-                keywords: ['hola', 'buenos dias', 'buenas'],
-                response: "¡Hola! ¿En qué puedo ayudarte hoy sobre la biblioteca?"
+                keywords: ['hola', 'buenos dias', 'buenas', 'quien eres', 'ayuda'],
+                response: "¡Hola! Soy tu asistente de Biblioteca Unifranz. Puedo informarte sobre nuestros Centros de Investigación, horarios por sede, acceso a Turnitin, colecciones digitales y más. ¿Qué deseas consultar?"
             },
             {
-                keywords: ['horario', 'hora', 'abierto', 'atienden'],
-                response: "🕒 <b>Horarios Sede Cochabamba:</b><br>• Lun-Vie: 08:00 - 20:00<br>• Sábados: 08:00 - 12:00"
+                keywords: ['horario', 'hora', 'abierto', 'atienden', 'tiempo'],
+                response: "🕒 <b>Horarios de Atención por Sede:</b><br><br>• <b>Cochabamba:</b> LV 08:00-20:00, Sáb 08:00-12:00<br>• <b>La Paz:</b> LV 08:05-20:00, Sáb 08:05-12:30<br>• <b>El Alto:</b> LV 08:30-19:30, Sáb 09:00-13:00<br>• <b>Santa Cruz:</b> LV 08:30-21:00, Sáb 08:30-12:00"
             },
             {
-                keywords: ['entrar', 'acceso', 'ingresar', 'login', 'usuario', 'contraseña', 'clave', 'cuenta'],
-                response: "🔑 <b>Credenciales de Acceso:</b><br>1. Entra a <a href='https://bibliovirtual.unifranz.edu.bo/' target='_blank' class='text-orange-600 underline'>bibliovirtual.unifranz.edu.bo</a><br>2. Usuario: Tu correo institucional (ej: Cbba.juan@unifranz.edu.bo)<br>3. Contraseña: Nº Carnet + CBB (ej: 123456CBB)"
+                keywords: ['hola', 'buenos dias', 'buenas', 'tardes', 'noches', 'quien eres', 'ayuda', 'que haces', 'asistente', 'saludos'],
+                response: "👋 ¡Hola! Soy el <b>Super Asistente Virtual</b> de la Biblioteca Unifranz.<br><br>Estoy aquí para resolver tus dudas sobre:<br>• 🕒 Horarios por sede<br>• 📚 Préstamos y requisitos<br>• 🛡 Turnitin e integridad<br>• 🔬 Centros de Investigación<br>• 🔑 Acceso y contraseñas<br><br>¿En qué puedo apoyarte hoy?"
+            },
+            // --- HORARIOS ESPECÍFICOS ---
+            {
+                keywords: ['horario', 'hora', 'atencion', 'la paz', 'lpz'],
+                response: "🕒 <b>Horario Sede La Paz:</b><br>• Lunes a Viernes: 08:05 - 20:00<br>• Sábados: 08:05 - 12:30"
             },
             {
-                keywords: ['requisito', 'prestamo', 'prestar', 'sacar libro', 'llevar libro'],
-                response: "📚 <b>Requisitos de Préstamo:</b><br>⚠ Requiere reserva previa en sistema.<br>• <b>Domicilio:</b> Dejar C.I. o Pasaporte vigente.<br>• <b>Sala:</b> Credencial o C.I."
+                keywords: ['horario', 'hora', 'atencion', 'el alto', 'alto'],
+                response: "🕒 <b>Horario Sede El Alto:</b><br>• Lunes a Viernes: 08:30 - 19:30<br>• Sábados: 09:00 - 13:00"
             },
             {
-                keywords: ['research4life', 'hinari', 'agora', 'oare', 'ardi', 'goali'],
-                response: "🌍 <b>Research4Life</b> ofrece acceso a 5 programas:<br>• Hinari (Salud)<br>• AGORA (Agricultura)<br>• OARE (Ambiente)<br>• ARDI (Innovación)<br>• GOALI (Justicia)<br><a href='https://portal.research4life.org/' target='_blank' class='text-orange-600 underline'>Ir al portal</a>"
+                keywords: ['horario', 'hora', 'atencion', 'santa cruz', 'scz'],
+                response: "🕒 <b>Horario Sede Santa Cruz:</b><br>• Lunes a Viernes: 08:30 - 21:00<br>• Sábados: 08:30 - 12:00"
             },
             {
-                keywords: ['contacto', 'ayuda', 'telegram', 'soporte'],
-                response: "💬 Puedes unirte a nuestro canal oficial de Telegram para soporte inmediato: <a href='https://t.me/+UMBSce1zVjhZGtEz' target='_blank' class='text-orange-600 underline font-bold'>Clic aquí para unirte</a>"
+                keywords: ['horario', 'hora', 'atencion', 'cochabamba', 'cbba'],
+                response: "🕒 <b>Horario Sede Cochabamba:</b><br>• Lunes a Viernes: 08:00 - 20:00<br>• Sábados: 08:00 - 12:00"
+            },
+            // --- CONTACTOS ESPECÍFICOS ---
+            {
+                keywords: ['telegram', 'contacto', 'soporte', 'la paz', 'lpz'],
+                response: "💬 <b>Soporte Sede La Paz (Telegram):</b><br><a href='https://t.me/+xPTracQNZ3kyMjdh' target='_blank' class='text-orange-600 underline font-bold'>Haz clic aquí para unirte al canal</a>"
             },
             {
-                keywords: ['direccion', 'ubicacion', 'donde queda'],
-                response: "📍 Estamos ubicados en la Sede Cochabamba. Puedes encontrar la biblioteca dentro del campus universitario."
+                keywords: ['telegram', 'contacto', 'soporte', 'el alto', 'alto'],
+                response: "💬 <b>Soporte Sede El Alto (Telegram):</b><br><a href='https://t.me/+PIKzcwSQ_sFmM2Vh' target='_blank' class='text-orange-600 underline font-bold'>Haz clic aquí para unirte al canal</a>"
+            },
+            {
+                keywords: ['telegram', 'contacto', 'soporte', 'santa cruz', 'scz'],
+                response: "💬 <b>Soporte Sede Santa Cruz (Telegram):</b><br><a href='https://t.me/+Omc_c_t5aZxhYTMx' target='_blank' class='text-orange-600 underline font-bold'>Haz clic aquí para unirte al canal</a>"
+            },
+            {
+                keywords: ['telegram', 'contacto', 'soporte', 'cochabamba', 'cbba'],
+                response: "💬 <b>Soporte Sede Cochabamba (Telegram):</b><br><a href='https://t.me/+UMBSce1zVjhZGtEz' target='_blank' class='text-orange-600 underline font-bold'>Haz clic aquí para unirte al canal</a>"
+            },
+            // --- GENERALES ---
+            {
+                keywords: ['horario', 'hora', 'abierto', 'atienden', 'tiempo', 'cerrado', 'cuando', 'momento', 'atencion'],
+                response: "🕒 <b>Horarios de Atención:</b><br><br>📍 <b>Cbba:</b> 08:00-20:00 (Sáb 12:00)<br>📍 <b>La Paz:</b> 08:05-20:00 (Sáb 12:30)<br>📍 <b>El Alto:</b> 08:30-19:30 (Sáb 13:00)<br>📍 <b>Santa Cruz:</b> 08:30-21:00 (Sáb 12:00)"
+            },
+            {
+                keywords: ['prestamo', 'llevar', 'sacar', 'requisitos', 'libro', 'domicilio', 'sala', 'pedir', 'devolucion', 'multa', 'caracteristicas'],
+                response: "📚 <b>Requisitos para Préstamo de Libros:</b><br><br>1️⃣ <b>Reserva:</b> Hazla en el sistema Koha.<br>2️⃣ <b>Domicilio:</b> Presenta tu <b>C.I. o Pasaporte vigente</b>.<br>3️⃣ <b>Préstamo en Sala:</b> Credencial Universitaria o C.I."
+            },
+            {
+                keywords: ['turnitin', 'plagio', 'similitud', 'integridad', 'originalidad', 'tesis', 'trabajo', 'revisar', 'docente', 'estudiante'],
+                response: "🛡 <b>Sistema de Integridad (Turnitin):</b><br><br>• 👩‍🏫 <b>Docentes:</b> Acceso con su correo UNIFRANZ.<br>• 👨‍🎓 <b>Estudiantes:</b> Disponible en las <b>computadoras/tablets</b> de biblioteca."
+            },
+            {
+                keywords: ['entrar', 'acceso', 'ingresar', 'login', 'usuario', 'contraseña', 'clave', 'cuenta', 'plataforma', 'koha', 'bibliovirtual'],
+                response: "🔑 <b>Guía de Acceso:</b><br><br>1. Visita <a href='https://bibliovirtual.unifranz.edu.bo/' target='_blank' class='text-orange-600 underline font-bold'>bibliovirtual.unifranz.edu.bo</a><br>2. <b>Usuario:</b> Correo institucional.<br>3. <b>Contraseña:</b> Nº Carnet + CBB."
+            },
+            {
+                keywords: ['investigacion', 'centros', 'ciintur', 'ime', 'inu', 'ipee', 'nihr', 'observatorio', 'cientifico', 'proyectos', 'unifranz'],
+                response: "🔬 <b>Centros de Investigación:</b><br>CIINTUR, IME, INU, IPEE, NIHR y ONT. Explora todos sus portales en la pestaña <b>'Investigación'</b>."
+            },
+            {
+                keywords: ['jornadas', 'evento', 'encuentro', 'archivo', 'cronograma', 'exposicion', 'pasado', 'descargar', 'pdf', 'libro'],
+                response: "📅 <b>Jornadas Unifranz:</b><br>Archivo Histórico (2021-2023) disponible en la pestaña 'Investigación'. ¡IV-2024 próximamente!"
             }
         ];
 
@@ -1663,7 +1706,7 @@
                 removeTypingIndicator();
                 const response = getBotResponse(messageText);
                 addMessage(response, 'bot');
-            }, 1000);
+            }, 800);
         }
 
         function addMessage(text, sender) {
@@ -1692,16 +1735,30 @@
 
         function getBotResponse(input) {
             const normalizedInput = input.toLowerCase();
+            let bestMatch = null;
+            let maxMatches = 0;
 
-            // Buscar coincidencia en base de conocimientos
+            // Lógica de coincidencia avanzada (Super Chatbot)
             for (const item of knowledgeBase) {
-                if (item.keywords.some(keyword => normalizedInput.includes(keyword))) {
-                    return item.response;
+                let currentMatches = 0;
+                item.keywords.forEach(keyword => {
+                    if (normalizedInput.includes(keyword)) {
+                        currentMatches++;
+                    }
+                });
+
+                if (currentMatches > maxMatches) {
+                    maxMatches = currentMatches;
+                    bestMatch = item.response;
                 }
             }
 
-            // Respuesta por defecto
-            return "🤔 No estoy seguro de entender tu pregunta. Intenta preguntar sobre:<br>• Horarios<br>• Cómo ingresar<br>• Requisitos<br>• Research4Life<br>• Contacto";
+            if (bestMatch && maxMatches > 0) {
+                return bestMatch;
+            }
+
+            // Respuesta por defecto si no hay coincidencias
+            return "🤔 No estoy seguro de entender tu pregunta. Pero puedes intentar preguntarme sobre:<br>• 🕒 <b>Horarios</b> por sede<br>• 📚 <b>Préstamos</b> y requisitos<br>• 🔑 Cómo <b>ingresar</b> al sistema<br>• 💬 Soporte por <b>Telegram</b><br>• 🔬 <b>Investigación</b> Unifranz";
         }
 
         function updateSedeSchedule(sede) {
